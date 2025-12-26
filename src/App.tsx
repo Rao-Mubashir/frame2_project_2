@@ -6,6 +6,8 @@ import ContactUs from './pages/ContactUs';
 import Faqs from './pages/Faqs';
 import Booking from './pages/Booking';
 import ServiceDetails from './pages/ServiceDetails';
+import Profile from './pages/Profile';
+import Admin from './pages/Admin';
 
 export default function App() {
   return (
@@ -18,6 +20,8 @@ export default function App() {
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/service/:serviceId" element={<ServiceDetails />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   );

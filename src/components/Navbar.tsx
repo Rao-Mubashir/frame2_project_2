@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, Shield } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useAuth } from '../contexts/AuthContext';
 import logoImage from 'figma:asset/5ace99222f98d2741bf5d17c6e52788ad0ee5147.png';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -55,6 +57,12 @@ export function Navbar() {
               <Link to="/faqs" className="hover:text-purple-900 transition-colors tracking-wide">
                 FAQs
               </Link>
+              {user?.role === 'admin' && (
+                <Link to="/admin" className="hover:text-purple-900 transition-colors tracking-wide flex items-center gap-1">
+                  <Shield className="w-4 h-4" />
+                  Admin
+                </Link>
+              )}
             </div>
 
             {/* Desktop Buttons - Hidden on mobile */}
@@ -71,6 +79,13 @@ export function Navbar() {
               >
                 Enquire now
               </Link>
+              <Link 
+                to="/profile" 
+                className="w-10 h-10 border-2 border-gray-800 text-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all hover:shadow-lg flex items-center justify-center"
+                aria-label="Profile"
+              >
+                <User className="w-5 h-5" />
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -85,6 +100,15 @@ export function Navbar() {
                 <Menu className="w-6 h-6 text-gray-800" />
               )}
             </button>
+
+            {/* Profile Icon - Visible on small screens */}
+            <Link 
+              to="/profile" 
+              className="lg:hidden w-8 h-8 ml-2 border-2 border-gray-800 text-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all hover:shadow-lg flex items-center justify-center"
+              aria-label="Profile"
+            >
+              <User className="w-4 h-4" />
+            </Link>
           </div>
 
           {/* Mobile Menu - Animated */}
@@ -135,6 +159,16 @@ export function Navbar() {
                     >
                       FAQs
                     </Link>
+                    {user?.role === 'admin' && (
+                      <Link 
+                        to="/admin" 
+                        className="text-gray-700 hover:text-purple-900 transition-colors tracking-wide py-2 px-4 rounded-lg hover:bg-white flex items-center gap-2"
+                        onClick={closeMenu}
+                      >
+                        <Shield className="w-4 h-4" />
+                        Admin Panel
+                      </Link>
+                    )}
                   </div>
 
                   {/* Mobile Action Buttons */}
