@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, HelpCircle, Users, CreditCard, Clock, Dumbbell, Calendar } from 'lucide-react';
 import { useState } from 'react';
 
@@ -20,8 +20,8 @@ const faqCategories = [
         answer: 'Joining fees vary by club and the time of year. We regularly run promotions with reduced or waived joining fees. Contact your nearest club or enquire online for current offers.'
       },
       {
-        question: 'Can I use any David Lloyd Club with my membership?',
-        answer: 'Yes! Your membership gives you access to all 97+ David Lloyd Clubs across the UK. You can book facilities and attend classes at any of our locations.'
+        question: 'Can I use any Frame 2 Complex with my membership?',
+        answer: 'Yes! Your membership gives you access to all 97+ Frame 2 Complex clubs across the UK. You can book facilities and attend classes at any of our locations.'
       }
     ]
   },

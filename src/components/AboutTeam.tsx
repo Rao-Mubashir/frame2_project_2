@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 export function AboutTeam() {
   return (
@@ -74,8 +74,8 @@ export function AboutTeam() {
             whileHover={{ scale: 1.02 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1716703742287-2b06c3c6d81a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwc3RhZmYlMjBncm91cCUyMHBob3RvfGVufDF8fHx8MTc2NjQzMTM3MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Frame 2 Complex Team"
+              src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjByZWNyZWF0aW9uJTIwY2VudGVyfGVufDF8fHx8MTc2NjQzNjYyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Frame 2 Complex Sports & Recreation Center"
               className="w-full h-full object-cover"
             />
           </motion.div>

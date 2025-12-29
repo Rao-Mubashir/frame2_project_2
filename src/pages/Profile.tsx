@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Pencil } from 'lucide-react';
 
 export default function Profile() {
@@ -141,7 +142,7 @@ export default function Profile() {
             <div className="text-center mb-8">
               <div className="relative inline-block mx-auto">
                 <img
-                  src={user.profile_picture ? `http://localhost:8000/storage/${user.profile_picture}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iI2VkZWRlZCIvPjx0ZXh0IHg9Ijc1IiB5PSI3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdGV4dC1iYXNlPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSI+VXNlciI8L3RleHQ+PC9zdmc+'}
+                  src={user.profile_picture ? `http://127.0.0.1:8000/storage/${user.profile_picture}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iI2VkZWRlZCIvPjx0ZXh0IHg9Ijc1IiB5PSI3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdGV4dC1iYXNlPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSI+VXNlciI8L3RleHQ+PC9zdmc+'}
                   alt="Profile"
                   className="w-32 h-32 rounded-full object-cover border-4 border-purple-200"
                   onError={(e) => {
@@ -149,8 +150,8 @@ export default function Profile() {
                     e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iI2ZmNjY2NjYiLz48dGV4dCB4PSI3NSIgeT0iNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRleHQtYmFzZT0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiPkVycm9yPC90ZXh0Pjwvc3ZnPg==';
                   }}
                 />
-                <label className="absolute -bottom-3 -right-3 bg-purple-600 text-white p-3 rounded-full cursor-pointer hover:bg-purple-700 transition-all duration-200 shadow-lg border-2 border-white">
-                  <Pencil size={18} />
+                <label className="absolute -bottom-1 -right-1 bg-purple-600 text-white p-2 rounded-full cursor-pointer hover:bg-purple-700 transition-all duration-200 shadow-lg border-2 border-white flex items-center justify-center">
+                  <Pencil size={16} />
                   <input
                     type="file"
                     accept="image/*"
@@ -167,7 +168,7 @@ export default function Profile() {
 
             {/* Update Profile Form */}
             <div className="mb-12">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-800">Update Profile</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-purple-900">Update Profile</h3>
               <form onSubmit={handleProfileUpdate} className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
@@ -191,10 +192,10 @@ export default function Profile() {
                     required
                   />
                 </div>
-                <div className="md:col-span-2">
+                <div className="md:col-span-2 flex justify-center">
                   <button
                     type="submit"
-                    className="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition-colors font-medium shadow-md border border-purple-600"
+                    className="w-full md:w-auto bg-purple-900 text-white py-3 px-8 rounded-lg hover:bg-purple-950 transition-colors font-medium shadow-md border border-purple-900"
                   >
                     Update Profile
                   </button>
@@ -204,7 +205,7 @@ export default function Profile() {
 
             {/* Update Password Form */}
             <div className="mb-12">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-800">Change Password</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-purple-900">Change Password</h3>
               <form onSubmit={handlePasswordUpdate} className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
@@ -228,24 +229,26 @@ export default function Profile() {
                     required
                   />
                 </div>
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
-                  <input
-                    type="password"
-                    name="password_confirmation"
-                    value={passwordData.password_confirmation}
-                    onChange={handlePasswordChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-md border border-blue-600"
-                  >
-                    Update Password
-                  </button>
+                <div className="md:col-span-2 md:flex md:items-end md:gap-4">
+                  <div className="flex-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+                    <input
+                      type="password"
+                      name="password_confirmation"
+                      value={passwordData.password_confirmation}
+                      onChange={handlePasswordChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      required
+                    />
+                  </div>
+                  <div className="mt-4 md:mt-0 md:flex-shrink-0">
+                    <button
+                      type="submit"
+                      className="w-full md:w-auto bg-purple-900 text-white py-3 px-6 rounded-lg hover:bg-purple-950 transition-colors font-medium shadow-md border border-purple-900"
+                    >
+                      Update Password
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -271,10 +274,10 @@ export default function Profile() {
             )}
 
             {/* Logout Button */}
-            <div className="text-center">
+            <div className="text-center mt-4">
               <button
                 onClick={logout}
-                className="bg-gray-600 text-white py-3 px-8 rounded-lg hover:bg-gray-700 transition-colors font-medium shadow-md border border-gray-600"
+                className="bg-purple-900 text-white py-3 px-8 rounded-lg hover:bg-purple-950 transition-colors font-medium shadow-md border border-purple-900"
               >
                 Logout
               </button>
@@ -286,7 +289,7 @@ export default function Profile() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-lg shadow-lg p-8"
           >
-            <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+            <h1 className="text-3xl font-bold text-center mb-8 text-purple-900">
               {isLogin ? 'Login' : 'Register'}
             </h1>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -342,7 +345,7 @@ export default function Profile() {
               {success && <p className="text-green-500 text-sm">{success}</p>}
               <button
                 type="submit"
-                className="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors"
+                className="w-full bg-purple-900 text-white py-3 px-4 rounded-lg hover:bg-purple-950 transition-colors font-medium shadow-md"
               >
                 {isLogin ? 'Login' : 'Register'}
               </button>

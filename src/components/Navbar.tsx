@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Menu, X, User, Shield } from 'lucide-react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import logoImage from 'figma:asset/5ace99222f98d2741bf5d17c6e52788ad0ee5147.png';
 
@@ -71,7 +71,7 @@ export function Navbar() {
                 to="/contact" 
                 className="px-5 xl:px-7 py-2.5 border-2 border-gray-800 text-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all hover:shadow-lg tracking-wide text-sm"
               >
-                Find a Club
+                Book Now
               </Link>
               <Link 
                 to="/booking" 

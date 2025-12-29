@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import {
   ChevronDown,
   ChevronRight,
@@ -215,38 +215,75 @@ const servicesData: Record<string, ServiceData> = {
   },
   rooms: {
     id: "rooms",
-    category: "ACCOMMODATION",
-    title: "Rooms",
+    category: "GAMING",
+    title: "Gaming Rooms",
     heroImage:
-      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob3RlbCUyMHJvb218ZW58MXx8fHwxNzY2NDI0MDE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    subtitle: "Luxurious accommodation",
+      "https://images.unsplash.com/photo-1593305841991-05c297ba4575?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmdpcm9vbSUyMHNldHVwfGVufDF8fHx8MTc2NjQ0MDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    subtitle: "Premium gaming facilities",
     description:
-      "Extend your visit with our luxurious accommodations. Beautifully appointed rooms with premium amenities ensure you rest in comfort and style after a day of sport and recreation at David Lloyd Clubs.",
+      "Immerse yourself in our state-of-the-art gaming rooms equipped with the latest technology and high-performance gaming setups. Whether you're competing in esports tournaments or enjoying casual gaming sessions, our facilities provide the perfect environment for gamers of all levels.",
     sideImage:
-      "https://images.unsplash.com/photo-1725962479542-1be0a6b0d444?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMHN1aXRlJTIwYmVkcm9vbXxlbnwxfHx8fDE3NjYzNzM3MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    featuresTitle: "Rest in luxury",
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmdpcm9vbSUyMGNvbXB1dGVyc3xlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    featuresTitle: "Game in style",
     featuresDescription:
-      "Our rooms combine elegant design with modern amenities to create the perfect retreat after your activities.",
+      "Our gaming rooms combine cutting-edge technology with comfortable environments to create the ultimate gaming experience.",
     features: [
       {
-        title: "Premium amenities",
+        title: "High-performance setups",
         description:
-          "Enjoy high-quality bedding, luxury toiletries, flat-screen TVs, and complimentary WiFi. Every detail designed for your comfort.",
+          "Experience gaming on premium rigs with the latest graphics cards, processors, and peripherals. From competitive esports setups to casual gaming stations.",
       },
       {
-        title: "En-suite facilities",
+        title: "Esports facilities",
         description:
-          "Modern bathrooms with rainfall showers, premium fixtures, and plush towels. Start and end your day refreshed.",
+          "Compete in our dedicated esports arena with professional-grade equipment, streaming capabilities, and tournament-ready environments.",
       },
       {
-        title: "Room service",
+        title: "Gaming lounge",
         description:
-          "Order from our extensive menu and enjoy meals in the comfort of your room. Available throughout the day and evening.",
+          "Relax in our comfortable gaming lounge areas with ergonomic seating, ambient lighting, and social spaces for gaming communities.",
       },
       {
         title: "Member benefits",
         description:
-          "Club members enjoy exclusive rates, priority booking, and complimentary access to all facilities during your stay.",
+          "Club members enjoy priority access to premium gaming setups, exclusive tournaments, and discounted rates for extended gaming sessions.",
+      },
+    ],
+  },
+  swimming: {
+    id: "swimming",
+    category: "AQUATICS",
+    title: "Swimming",
+    heroImage:
+      "https://images.unsplash.com/photo-1530549387789-4c1017266635?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWluZyUyMHBvb2wlMjBsdXh1cnklMjBpbmRvb3J8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    subtitle: "Olympic-standard swimming facilities",
+    description:
+      "Swim in pristine Olympic-standard pools designed for both competitive training and recreational swimming. Our crystal-clear waters provide the perfect aquatic environment, whether you're training for competition or enjoying a relaxing swim with family and friends.",
+    sideImage:
+      "https://images.unsplash.com/photo-1530549387789-4c1017266635?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWluZyUyMHBvb2wlMjBsdXh1cnklMjBpbmRvb3J8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    featuresTitle: "Experience aquatic excellence",
+    featuresDescription:
+      "Our swimming facilities combine state-of-the-art technology with luxurious amenities to create the perfect aquatic experience.",
+    features: [
+      {
+        title: "Olympic-standard pools",
+        description:
+          "Swim in our temperature-controlled pools with crystal-clear water maintained to the highest standards. Perfect for training, recreation, and competitive swimming.",
+      },
+      {
+        title: "Professional coaching",
+        description:
+          "Receive expert guidance from certified swimming instructors. From beginner lessons to advanced training programs, we cater to all skill levels and ages.",
+      },
+      {
+        title: "Wellness facilities",
+        description:
+          "Relax in our spa areas, enjoy hydrotherapy treatments, and take advantage of our sauna and steam rooms for complete post-swim recovery.",
+      },
+      {
+        title: "Family-friendly environment",
+        description:
+          "Bring the whole family with our dedicated family swim times, children's programs, and safe, supervised aquatic activities for all ages.",
       },
     ],
   },
@@ -301,24 +338,31 @@ export default function ServiceDetails() {
                 ]
               : serviceId === "rooms"
                 ? [
-                    "https://images.unsplash.com/photo-1731336478850-6bce7235e320?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob3RlbCUyMGJlZHJvb218ZW58MXx8fHwxNzY2MzU2MDA4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                    "https://images.unsplash.com/photo-1662841540530-2f04bb3291e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMHN1aXRlJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY2NDQwNDc3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                    "https://images.unsplash.com/photo-1759303690206-1dc66e9ef8ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGFtZW5pdGllcyUyMHNwYXxlbnwxfHx8fDE3NjY0NDA0Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                    "https://images.unsplash.com/photo-1667125095636-dce94dcbdd96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3V0aXF1ZSUyMGhvdGVsJTIwcm9vbXxlbnwxfHx8fDE3NjYzODA1Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    "https://images.unsplash.com/photo-1593305841991-05c297ba4575?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmdpcm9vbSUyMHNldHVwfGVufDF8fHx8MTc2NjQ0MDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    "https://images.unsplash.com/photo-1542751371-adc38448a05e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmdpcm9vbSUyMGNvbXB1dGVyc3xlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    "https://images.unsplash.com/photo-1511512578047-dfb367046420?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlc3BvcnRzJTIwZ2FtaW5nJTIwcm9vbXxlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    "https://images.unsplash.com/photo-1632854285205-8e31478219db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmdpcm9vbSUyMGxvdW5nZXxlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                  ]
+                : serviceId === "swimming"
+                ? [
+                    "https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWluZyUyMGxlc3NvbnMlMjBjb2FjaGluZ3xlbnwxfHx8fDE3NjY0MzYyMTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXRlciUyMGFyZWF8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWVyJTIwc3dpbW1pbmd8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    "https://images.unsplash.com/photo-1530549387789-4c1017266635?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWluZyUyMHBvb2wlMjBsdXh1cnklMjBpbmRvb3J8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
                   ]
                 : [];
-
-  const nextSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev + 1) % facilityImages.length,
-    );
-  };
 
   const prevSlide = () => {
     setCurrentSlide(
       (prev) =>
         (prev - 1 + facilityImages.length) %
         facilityImages.length,
+    );
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev + 1) % facilityImages.length,
     );
   };
 
@@ -423,6 +467,7 @@ export default function ServiceDetails() {
             serviceId === "snooker" ||
             serviceId === "boxing" ||
             serviceId === "game-arena" ||
+            serviceId === "swimming" ||
             serviceId === "rooms" ? (
               <div className="relative">
                 {/* Background glow effect */}
@@ -722,6 +767,158 @@ export default function ServiceDetails() {
           </div>
         </div>
       </section>
+
+      {/* Come and Experience Section - Only for Swimming */}
+      {serviceId === "swimming" && (
+        <>
+          {/* Location Finder Section */}
+          <section className="bg-white py-20">
+            <div className="max-w-[1000px] mx-auto px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <h2 className="text-purple-900 mb-12">
+                  Come and experience it for yourself
+                </h2>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
+                  {/* Search Input */}
+                  <div className="relative flex-1 w-full">
+                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <input
+                      type="text"
+                      placeholder="Enter a town, city or postcode"
+                      value={searchLocation}
+                      onChange={(e) =>
+                        setSearchLocation(e.target.value)
+                      }
+                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#8B1538] transition-colors"
+                    />
+                  </div>
+
+                  {/* Find Button */}
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg flex items-center gap-2 whitespace-nowrap"
+                  >
+                    <MapPin className="w-5 h-5" />
+                    Find your local Club
+                  </motion.button>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Facilities Showcase Section */}
+          <section className="bg-[#F5F1E8] py-24">
+            <div className="max-w-[1400px] mx-auto px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-center mb-16"
+              >
+                <h2 className="text-gray-700 mb-8">
+                  A swimming facility near you
+                </h2>
+                <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                  Dive into our Olympic-standard pools. Explore
+                  our temperature-controlled waters and try out our
+                  extensive aquatic facilities. Discover
+                  everything you want from a swimming venue,
+                  with our signature David Lloyd Clubs
+                  excellence throughout.
+                </p>
+              </motion.div>
+
+              {/* Image Carousel */}
+              <div className="relative">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="relative h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                >
+                  {/* Carousel Images */}
+                  {facilityImages.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      initial={false}
+                      animate={{
+                        opacity: currentSlide === index ? 1 : 0,
+                        scale: currentSlide === index ? 1 : 1.1,
+                      }}
+                      transition={{ duration: 0.7 }}
+                      className="absolute inset-0"
+                      style={{
+                        pointerEvents:
+                          currentSlide === index
+                            ? "auto"
+                            : "none",
+                      }}
+                    >
+                      <img
+                        src={image}
+                        alt={`Swimming facility ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        style={{
+                          filter:
+                            "contrast(1.05) saturate(1.1)",
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </motion.div>
+                  ))}
+
+                  {/* Navigation Arrows */}
+                  <div className="absolute inset-0 flex items-center justify-between px-8 pointer-events-none">
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={prevSlide}
+                      className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all pointer-events-auto"
+                    >
+                      <ChevronLeft className="w-6 h-6 text-gray-800" />
+                    </motion.button>
+
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={nextSlide}
+                      className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all pointer-events-auto"
+                    >
+                      <ChevronRight className="w-6 h-6 text-gray-800" />
+                    </motion.button>
+                  </div>
+                </motion.div>
+
+                {/* Slide Indicators */}
+                <div className="flex items-center justify-center gap-3 mt-8">
+                  {facilityImages.map((_, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      whileHover={{ scale: 1.2 }}
+                      className={`h-2 rounded-full transition-all ${
+                        currentSlide === index
+                          ? "w-12 bg-purple-900"
+                          : "w-2 bg-gray-400 hover:bg-gray-600"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
 
       {/* Come and Experience Section - Only for Football */}
       {serviceId === "football" && (
@@ -1200,6 +1397,326 @@ export default function ServiceDetails() {
                           </p>
                           <p className="text-gray-500 text-sm">
                             David Lloyd Beaconsfield
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Gradient Overlays for fade effect */}
+              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
+              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Member Experiences Section - Only for Swimming */}
+      {serviceId === "swimming" && (
+        <section className="bg-white py-24 overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-8">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-20"
+            >
+              <h2 className="text-gray-700 mb-6">
+                Member experiences
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Find out what our members love most about our
+                swimming facilities
+              </p>
+            </motion.div>
+
+            {/* Scrolling Testimonials */}
+            <div className="relative">
+              <motion.div
+                className="flex gap-8"
+                animate={{
+                  x: [0, -2400], // Adjust based on card width
+                }}
+                transition={{
+                  x: {
+                    duration: 40,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {/* Testimonial 1 */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWVyJTIwcG9vbHxlbnwxfHx8fDE3NjY0MzYyMTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Alex"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          The pool facilities are incredible. Crystal-clear water, perfect temperature, and the coaching staff are exceptional. My swimming has improved dramatically since joining.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Alex
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            David Lloyd Manchester
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Testimonial 2 */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXRlciUyMGFyZWF8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Sophie"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Absolutely love the aquatic facilities! The wellness areas are luxurious and the pool is always pristine. Perfect for both training and relaxation sessions.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Sophie
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            David Lloyd Birmingham
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Testimonial 3 */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWVyJTIwcG9vbHxlbnwxfHx8fDE3NjY0MzYyMTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Michael"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Outstanding coaching and facilities! The Olympic-standard pool and professional instruction have taken my swimming to the next level. Highly recommended!
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Michael
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            David Lloyd Edinburgh
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Testimonial 4 */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXRlciUyMGFyZWF8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Emma"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          The aquatic center is world-class! From the hydrotherapy pools to the professional coaching, every aspect is designed for peak performance and relaxation.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Emma
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            David Lloyd Glasgow
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Duplicate cards for seamless loop */}
+                {/* Testimonial 1 - Duplicate */}
+                <div className="flex-shrink-0 w-[550px]">
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWVyJTIwcG9vbHxlbnwxfHx8fDE3NjY0MzYyMTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Alex"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          The pool facilities are incredible. Crystal-clear water, perfect temperature, and the coaching staff are exceptional. My swimming has improved dramatically since joining.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Alex
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            David Lloyd Manchester
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Testimonial 2 - Duplicate */}
+                <div className="flex-shrink-0 w-[550px]">
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXRlciUyMGFyZWF8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Sophie"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Absolutely love the aquatic facilities! The wellness areas are luxurious and the pool is always pristine. Perfect for both training and relaxation sessions.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Sophie
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            David Lloyd Birmingham
                           </p>
                         </div>
                       </div>

@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 export function FeaturesSection() {
   return (
@@ -13,13 +14,13 @@ export function FeaturesSection() {
             transition={{ duration: 0.8 }}
             className="max-w-[900px] mx-auto text-center bg-white/60 backdrop-blur-sm p-16 rounded-[3rem] shadow-xl border border-gray-100"
           >
-            <h2 className="text-gray-800 mb-8">Football Grounds</h2>
+            <h2 className="text-gray-900 mb-10 text-5xl">Football Grounds</h2>
             <p className="text-gray-700 text-xl mb-12 leading-relaxed">
               Championship-quality football pitches with pristine surfaces. Whether you're training for competition or enjoying a casual match, our grounds provide the perfect setting for the beautiful game.
             </p>
-            <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg">
+            <Link to="/booking" className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg">
               Book a pitch
-            </button>
+            </Link>
           </motion.div>
         </div>
       </div>
@@ -64,14 +65,14 @@ export function FeaturesSection() {
                     WebkitBackfaceVisibility: 'hidden'
                   }}
                 >
-                  <h2 className="text-gray-800 mb-5">Cricket Ground</h2>
+                  <h2 className="text-gray-900 mb-10 text-5xl">Cricket Ground</h2>
                   <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                     Experience cricket at its finest on our professional-grade turf wickets. From club matches to coaching sessions, our grounds offer everything you need for the gentleman's game.
                   </p>
                   <div>
-                    <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all">
+                    <Link to="/service/cricket" className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all">
                       Play cricket
-                    </button>
+                    </Link>
                   </div>
                 </div>
 
@@ -89,9 +90,9 @@ export function FeaturesSection() {
                     Join leagues, participate in tournaments, and develop your skills with expert coaching. Our cricket facilities feature top-quality pitches, nets, and all the amenities you need.
                   </p>
                   <div>
-                    <button className="px-10 py-4 bg-white text-purple-900 rounded-full hover:bg-[#F5F1E8] transition-all">
+                    <Link to="/service/cricket" className="inline-block px-10 py-4 bg-white text-purple-900 rounded-full hover:bg-[#F5F1E8] transition-all">
                       Play cricket
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -148,9 +149,9 @@ export function FeaturesSection() {
                 <p className="text-gray-700 text-xl mb-12 leading-relaxed">
                   Train like a champion in our state-of-the-art boxing facilities. Professional rings, heavy bags, speed bags, and expert coaching to help you achieve peak performance.
                 </p>
-                <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg">
+                <Link to="/booking" className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg">
                   Start training
-                </button>
+                </Link>
               </div>
             </motion.div>
           </div>

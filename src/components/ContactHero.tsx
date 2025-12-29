@@ -1,6 +1,6 @@
 import { Pause, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 export function ContactHero() {
   const [isPaused, setIsPaused] = useState(false);

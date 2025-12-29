@@ -1,6 +1,11 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
-export function AboutHero() {
+interface AboutHeroProps {
+  title?: string;
+  subtitle?: string;
+}
+
+export function AboutHero({ title = 'About', subtitle = 'Little moments of greatness' }: AboutHeroProps) {
   return (
     <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden">
       {/* Background Image */}
@@ -21,7 +26,7 @@ export function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          About
+          {title}
         </motion.h1>
         <motion.p 
           className="text-base sm:text-lg md:text-xl lg:text-2xl text-center max-w-2xl px-4"
@@ -29,7 +34,7 @@ export function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Little moments of greatness
+          {subtitle}
         </motion.p>
       </div>
     </div>

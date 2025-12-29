@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form@7.55.0';
 import { Eye, EyeOff, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Navbar } from '../components/Navbar';

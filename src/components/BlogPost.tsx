@@ -1,6 +1,6 @@
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 
 const blogPosts = [
   {
@@ -12,6 +12,7 @@ const blogPosts = [
     category: "Facilities",
     date: "Dec 28, 2025",
     readTime: "6 min read",
+    author: "Frame 2 Complex Team",
     content: `
       <h2>World-Class Facilities in the Heart of Bradford</h2>
       <p>Frame 2 Complex stands as Bradford's premier sports and recreation destination, offering an unparalleled experience for athletes, fitness enthusiasts, and sports lovers of all levels.</p>
@@ -38,6 +39,7 @@ const blogPosts = [
     category: "Success Stories",
     date: "Dec 25, 2025",
     readTime: "8 min read",
+    author: "Sarah Mitchell",
     content: `
       <h2>Transforming Lives Through Sports and Fitness</h2>
       <p>At Frame 2 Complex, we're not just about facilities – we're about transformation. Here are inspiring stories from members who achieved their fitness goals with our support.</p>
@@ -64,6 +66,7 @@ const blogPosts = [
     category: "Nutrition",
     date: "Dec 20, 2025",
     readTime: "7 min read",
+    author: "Dr. James Wilson",
     content: `
       <h2>Fueling Your Body for Optimal Performance</h2>
       <p>Proper nutrition is the foundation of athletic success. Whether you're a competitive athlete or enjoy recreational sports, understanding sports nutrition can significantly enhance your performance and recovery.</p>
@@ -93,6 +96,7 @@ const blogPosts = [
     category: "Esports",
     date: "Dec 15, 2025",
     readTime: "9 min read",
+    author: "Alex Chen",
     content: `
       <h2>Gaming: The New Frontier of Professional Sports</h2>
       <p>Esports has emerged as a global phenomenon, with professional gamers competing for millions in prize money and millions of fans worldwide. At Frame 2 Complex, we're proud to support this exciting evolution of sports entertainment.</p>
@@ -119,6 +123,7 @@ const blogPosts = [
     category: "Wellness",
     date: "Dec 10, 2025",
     readTime: "6 min read",
+    author: "Dr. Lisa Thompson",
     content: `
       <h2>The Mind-Body Connection in Sports</h2>
       <p>Athletic performance isn't just about physical strength and technique – mental wellness plays a crucial role in achieving peak performance and maintaining long-term success.</p>
@@ -145,6 +150,7 @@ const blogPosts = [
     category: "Youth",
     date: "Dec 5, 2025",
     readTime: "7 min read",
+    author: "Coach David Patel",
     content: `
       <h2>Building Tomorrow's Champions Today</h2>
       <p>At Frame 2 Complex, we're committed to developing young athletes and fostering a love for sports that will last a lifetime. Our youth programs combine fun, skill development, and character building.</p>
@@ -164,88 +170,130 @@ const blogPosts = [
   }
 ];
 
-export function BlogGrid() {
+export function BlogPost() {
+  const { blogId } = useParams();
+  const post = blogPosts.find(post => post.slug === blogId);
+
+  if (!post) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-purple-900 mb-4">Blog Post Not Found</h1>
+          <Link to="/blog" className="text-purple-600 hover:text-purple-800 underline">
+            ← Back to Blog
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <section className="py-24 px-8 bg-[#F5F1E8]">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16">
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <div className="relative h-[60vh] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${post.image})` }}
+        >
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        <div className="relative max-w-4xl mx-auto px-8 h-full flex items-end pb-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-white"
           >
-            <p className="text-purple-900 uppercase tracking-wider mb-4">Latest Stories</p>
-            <h2 className="text-5xl md:text-6xl text-purple-900 mb-6">Our Blog</h2>
-            <p className="text-xl text-purple-900/70 max-w-2xl mx-auto">
-              Expert advice, wellness tips, and inspiring stories from our community
+            <div className="flex items-center gap-4 mb-4">
+              <span className="px-4 py-2 bg-purple-900 text-white text-sm uppercase tracking-wider rounded-full">
+                {post.category}
+              </span>
+              <div className="flex items-center gap-4 text-sm">
+                <div className="flex items-center gap-1">
+                  <Calendar className="w-4 h-4" />
+                  <span>{post.date}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Clock className="w-4 h-4" />
+                  <span>{post.readTime}</span>
+                </div>
+              </div>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              {post.title}
+            </h1>
+            <p className="text-xl text-white/90 max-w-2xl">
+              {post.excerpt}
             </p>
           </motion.div>
         </div>
+      </div>
 
-        {/* Blog Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-            >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={post.image} 
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="px-4 py-2 bg-purple-900 text-white text-sm uppercase tracking-wider rounded-full">
-                    {post.category}
-                  </span>
-                </div>
+      {/* Content Section */}
+      <div className="bg-[#F5F1E8] py-16">
+        <div className="max-w-4xl mx-auto px-8">
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="bg-white rounded-2xl shadow-xl p-8 md:p-12"
+          >
+            {/* Author Info */}
+            <div className="flex items-center gap-4 mb-8 pb-8 border-b border-gray-200">
+              <div className="w-12 h-12 bg-purple-900 rounded-full flex items-center justify-center text-white font-bold">
+                {post.author.charAt(0)}
               </div>
+              <div>
+                <p className="font-semibold text-purple-900">{post.author}</p>
+                <p className="text-sm text-purple-900/60">Author</p>
+              </div>
+            </div>
 
-              {/* Content */}
-              <div className="p-6">
-                {/* Meta Info */}
-                <div className="flex items-center gap-4 mb-4 text-sm text-purple-900/60">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>{post.date}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
+            {/* Blog Content */}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              {/* Text Content */}
+              <div
+                className="prose prose-lg max-w-none prose-headings:text-purple-900 prose-p:text-gray-700 prose-strong:text-purple-900"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
 
-                {/* Title */}
-                <h3 className="text-2xl text-purple-900 mb-3 group-hover:text-purple-900/80 transition-colors">
-                  {post.title}
-                </h3>
-
-                {/* Excerpt */}
-                <p className="text-purple-900/70 mb-6 leading-relaxed">
-                  {post.excerpt}
-                </p>
-
-                {/* Read More Link */}
-                <Link 
-                  to={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-purple-900 font-semibold group-hover:gap-4 transition-all"
+              {/* Side Image */}
+              <div className="flex items-center justify-center">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="relative w-full max-w-md"
                 >
-                  Read More
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-auto rounded-2xl shadow-lg object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl"></div>
+                </motion.div>
               </div>
-            </motion.article>
-          ))}
+            </div>
+          </motion.article>
+
+          {/* Back to Blog */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center mt-12"
+          >
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Back to Blog
+            </Link>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation } from "framer-motion";
 import {
   Mail,
   Phone,
@@ -9,38 +9,49 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-const contactInfo = [
-  {
-    icon: Phone,
-    title: "Call Us",
-    details: "+44 1274 722303",
-    subtext: "Mon - Fri, 8am - 8pm",
-    gradient: "from-purple-900 to-purple-950",
-  },
-  {
-    icon: Mail,
-    title: "Email Us",
-    details: "hello@Frame2Complex.com",
-    subtext: "We'll respond within 24 hours",
-    gradient: "from-purple-950 to-purple-900",
-  },
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    details: "Feather Rd, Bradford BD3 9DJ",
-    subtext: "United Kingdom",
-    gradient: "from-purple-900 to-purple-950",
-  },
-  {
-    icon: Clock,
-    title: "Opening Hours",
-    details: "Mon - Sun: 6am - 11pm",
-    subtext: "Public holidays may vary",
-    gradient: "from-purple-950 to-purple-900",
-  },
-];
+interface ContactDetails {
+  email?: string;
+  phone?: string;
+  address_line1?: string;
+  address_line2?: string | null;
+}
 
-export function ContactForm() {
+export function ContactForm({ contact }: { contact?: ContactDetails }) {
+  const phone = contact?.phone ?? "+44 1274 722303";
+  const email = contact?.email ?? "hello@Frame2Complex.com";
+  const address1 = contact?.address_line1 ?? "Feather Rd, Bradford BD3 9DJ";
+  const address2 = contact?.address_line2 ?? "United Kingdom";
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Call Us",
+      details: phone,
+      subtext: "Mon - Fri, 8am - 8pm",
+      gradient: "from-purple-900 to-purple-950",
+    },
+    {
+      icon: Mail,
+      title: "Email Us",
+      details: email,
+      subtext: "We'll respond within 24 hours",
+      gradient: "from-purple-950 to-purple-900",
+    },
+    {
+      icon: MapPin,
+      title: "Visit Us",
+      details: address1,
+      subtext: address2,
+      gradient: "from-purple-900 to-purple-950",
+    },
+    {
+      icon: Clock,
+      title: "Opening Hours",
+      details: "Mon - Sun: 6am - 11pm",
+      subtext: "Public holidays may vary",
+      gradient: "from-purple-950 to-purple-900",
+    },
+  ];
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -361,41 +372,7 @@ export function ContactForm() {
                     </motion.div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      <label
-                        htmlFor="club"
-                        className="block text-sm mb-3 text-gray-700"
-                      >
-                        Preferred Club Location
-                      </label>
-                      <select
-                        id="club"
-                        name="club"
-                        value={formData.club}
-                        onChange={handleChange}
-                        className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-purple-900 focus:shadow-lg transition-all duration-300 bg-white/50"
-                      >
-                        <option value="">Select a club</option>
-                        <option value="london">
-                          London - Central
-                        </option>
-                        <option value="manchester">
-                          Manchester
-                        </option>
-                        <option value="birmingham">
-                          Birmingham
-                        </option>
-                        <option value="leeds">Leeds</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </motion.div>
-
+                  <div className="grid grid-cols-1 md:grid-cols-1 gap-7">
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -430,6 +407,9 @@ export function ContactForm() {
                         </option>
                         <option value="feedback">
                           Feedback
+                        </option>
+                        <option value="booking">
+                          Booking Queries
                         </option>
                         <option value="other">Other</option>
                       </select>

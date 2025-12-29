@@ -49,7 +49,13 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
+        // Log the user out and invalidate the session before deleting the account
+        Auth::logout();
+
         $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return Redirect::to('/')->with('status', 'account-deleted');
     }

@@ -1,14 +1,29 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { MapPin, Clock, Smartphone, Wifi } from 'lucide-react';
 
-const features = [
+interface AboutEuropeProps {
+  heading?: string;
+  addressLine1?: string;
+  addressLine2?: string;
+  features?: { title: string; description: string }[];
+}
+
+const defaultFeatures = [
   { icon: MapPin, title: 'Prime Location', description: 'Easy access from Bradford city center' },
   { icon: Clock, title: 'Extended Hours', description: 'Open 7 days a week' },
   { icon: Smartphone, title: 'Online Booking', description: 'Book facilities anytime' },
-  { icon: Wifi, title: 'Free WiFi', description: 'Stay connected throughout' }
+  { icon: Wifi, title: 'Free WiFi', description: 'Stay connected throughout' },
 ];
 
-export function AboutEurope() {
+export function AboutEurope({
+  heading = 'Your Premier Sports Complex in Bradford',
+  addressLine1 = 'Feather Rd, Bradford BD3 9DJ',
+  addressLine2 = 'United Kingdom',
+  features,
+}: AboutEuropeProps) {
+  const items = features ?? defaultFeatures.map(({ title, description }) => ({ title, description }));
+  const icons = [MapPin, Clock, Smartphone, Wifi];
+
   return (
     <section className="bg-[#F5F1E8] py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8">
       <div className="max-w-[1400px] mx-auto">
@@ -19,7 +34,7 @@ export function AboutEurope() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Your Premier Sports Complex in Bradford
+          {heading}
         </motion.h2>
 
         {/* Location Map */}
@@ -54,7 +69,7 @@ export function AboutEurope() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Feather Rd, Bradford BD3 9DJ
+              {addressLine1}
             </motion.h3>
             <motion.p 
               className="text-base sm:text-lg md:text-xl text-gray-600"
@@ -63,14 +78,16 @@ export function AboutEurope() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              United Kingdom
+              {addressLine2}
             </motion.p>
           </div>
         </motion.div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-          {features.map((feature, index) => (
+          {items.map((feature, index) => {
+            const Icon = icons[index] ?? MapPin;
+            return (
             <motion.div
               key={index}
               className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 text-center hover:shadow-xl transition-all duration-300 cursor-pointer group"
@@ -81,7 +98,7 @@ export function AboutEurope() {
               whileHover={{ y: -5, scale: 1.05 }}
             >
               <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-900 to-purple-950 rounded-2xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-lg">
-                <feature.icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
               </div>
               <h4 className="text-base sm:text-lg text-gray-800 mb-2">
                 {feature.title}
@@ -90,7 +107,7 @@ export function AboutEurope() {
                 {feature.description}
               </p>
             </motion.div>
-          ))}
+          );})}
         </div>
       </div>
     </section>

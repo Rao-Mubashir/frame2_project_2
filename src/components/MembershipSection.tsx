@@ -1,6 +1,8 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Eye, Search, ArrowRight } from "lucide-react";
-import exampleImage from "figma:asset/44e1296fc10da0bd821e3f355d87f863efad670d.png";
+import { Link } from "react-router-dom";
+
+const exampleImage = "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjBjbHViJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 
 // Customer reviews data
 const reviews = [
@@ -93,10 +95,10 @@ export function MembershipSection() {
           <h2 className="text-white mb-10 text-6xl drop-shadow-2xl">
             Take a look around
           </h2>
-          <button className="px-10 py-4 bg-white text-gray-800 rounded-full hover:bg-gray-100 transition-all hover:scale-105 transform shadow-xl flex items-center gap-3 mx-auto group">
+          <Link to="/service/boxing" className="inline-flex px-10 py-4 bg-white text-gray-800 rounded-full hover:bg-gray-100 transition-all hover:scale-105 transform shadow-xl items-center gap-3 mx-auto group">
             <span>Look around our Clubs</span>
             <Eye className="w-5 h-5 group-hover:scale-110 transition-transform" />
-          </button>
+          </Link>
         </motion.div>
       </div>
 
@@ -119,18 +121,18 @@ export function MembershipSection() {
               </h2>
 
               <div className="flex flex-col gap-4 max-w-[320px]">
-                <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg flex items-center justify-center gap-2 group">
-                  <span>Explore memberships</span>
+                <Link to="/booking" className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg flex items-center justify-center gap-2 group">
+                  <span>Book Now</span>
                   <span className="group-hover:translate-x-1 transition-transform">
                     →
                   </span>
-                </button>
-                <button className="px-10 py-4 bg-transparent text-purple-900 border-2 border-purple-900 rounded-full hover:bg-white transition-all hover:scale-105 transform flex items-center justify-center gap-2 group">
-                  <span>Book a tour</span>
+                </Link>
+                <Link to="/booking" className="px-10 py-4 bg-transparent text-purple-900 border-2 border-purple-900 rounded-full hover:bg-white transition-all hover:scale-105 transform flex items-center justify-center gap-2 group">
+                  <span>Book Now</span>
                   <span className="group-hover:translate-x-1 transition-transform">
                     →
                   </span>
-                </button>
+                </Link>
               </div>
             </motion.div>
 
@@ -282,20 +284,6 @@ export function MembershipSection() {
             <h2 className="text-purple-900 mb-10 text-5xl">
               Come experience it for yourself
             </h2>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-[700px] mx-auto">
-              <div className="relative flex-1 w-full">
-                <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Enter a town, city or postcode"
-                  className="w-full pl-14 pr-6 py-4 rounded-full border border-gray-300 focus:border-purple-900 focus:outline-none text-gray-700 bg-white shadow-sm"
-                />
-              </div>
-              <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg flex items-center gap-2 group whitespace-nowrap">
-                <span>Find your local Club</span>
-                <Search className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              </button>
-            </div>
           </motion.div>
 
           {/* Why join David Lloyd Clubs */}
@@ -314,14 +302,10 @@ export function MembershipSection() {
               </h2>
 
               <div className="flex flex-col gap-4 max-w-[320px]">
-                <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg flex items-center justify-center gap-2 group">
-                  <span>Explore memberships</span>
+                <Link to="/booking" className="inline-flex px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg items-center justify-center gap-2 group">
+                  <span>Book Now</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-10 py-4 bg-transparent text-purple-900 border-2 border-purple-900 rounded-full hover:bg-white transition-all hover:scale-105 transform flex items-center justify-center gap-2 group">
-                  <span>Book a tour</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               </div>
             </motion.div>
 

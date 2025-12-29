@@ -1,30 +1,38 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Heart, Users, Award, Sparkles } from 'lucide-react';
 
-const values = [
+interface AboutValuesProps {
+  heading?: string;
+  values?: { title: string; description: string }[];
+}
+
+const defaultValues = [
   {
     icon: Heart,
     title: 'Passion',
-    description: 'We love sports and recreation, and it shows in everything we create - from our facilities to our visitor experiences.'
+    description: 'We love sports and recreation, and it shows in everything we create - from our facilities to our visitor experiences.',
   },
   {
     icon: Users,
     title: 'Community',
-    description: 'We bring people together, creating spaces where friendships form, teams unite, and families enjoy quality time.'
+    description: 'We bring people together, creating spaces where friendships form, teams unite, and families enjoy quality time.',
   },
   {
     icon: Award,
     title: 'Excellence',
-    description: 'We never settle for good enough. We constantly maintain and improve our facilities to deliver the very best.'
+    description: 'We never settle for good enough. We constantly maintain and improve our facilities to deliver the very best.',
   },
   {
     icon: Sparkles,
     title: 'Experience',
-    description: 'We believe in creating memorable moments - whether you\'re playing, training, gaming, or simply relaxing.'
-  }
+    description: "We believe in creating memorable moments - whether you're playing, training, gaming, or simply relaxing.",
+  },
 ];
 
-export function AboutValues() {
+export function AboutValues({ heading = 'Our Values', values }: AboutValuesProps) {
+  const items = values ?? defaultValues.map(({ title, description }) => ({ title, description }));
+  const icons = [Heart, Users, Award, Sparkles];
+
   return (
     <section className="bg-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8">
       <div className="max-w-[1400px] mx-auto">
@@ -60,12 +68,12 @@ export function AboutValues() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Our Values
+              {heading}
             </motion.h2>
 
             <div className="space-y-6 sm:space-y-8">
-              {values.map((value, index) => {
-                const Icon = value.icon;
+              {items.map((value, index) => {
+                const Icon = icons[index] ?? Heart;
                 return (
                   <motion.div
                     key={index}

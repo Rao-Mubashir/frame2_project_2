@@ -1,16 +1,18 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { MapPin, Navigation, TrendingUp } from 'lucide-react';
 
-const clubLocations = [
-  { city: 'Bradford', count: 1, region: 'United Kingdom' },
-  /*{ city: 'Manchester', count: 8, region: 'North West' },
-  { city: 'Birmingham', count: 6, region: 'Midlands' },
-  { city: 'Leeds', count: 5, region: 'Yorkshire' },
-  { city: 'Bristol', count: 4, region: 'South West' },
-  { city: 'Edinburgh', count: 3, region: 'Scotland' }*/
-];
+interface ContactDetails {
+  address_line1?: string;
+  address_line2?: string | null;
+}
 
-export function ContactMap() {
+export function ContactMap({ contact }: { contact?: ContactDetails }) {
+  const city = contact?.address_line1 ?? 'Bradford';
+  const region = contact?.address_line2 ?? 'United Kingdom';
+
+  const clubLocations = [
+    { city, count: 1, region },
+  ];
   return (
     <section className="relative bg-white py-32 px-8 overflow-hidden">
       {/* Animated Background Grid */}
@@ -170,7 +172,7 @@ export function ContactMap() {
             </div>
 
             {/* Search Box */}
-            <motion.div
+            {/*<motion.div
               className="relative z-10 w-full max-w-2xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -196,12 +198,14 @@ export function ContactMap() {
                     <Navigation className="w-5 h-5" />
                   </motion.button>
                 </div>
-
-                {/* Glow Effect on Hover */}
+                */}
+                {/* Glow Effect on Hover
                 <div className="absolute inset-0 bg-purple-900/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl -z-10"></div>
               </div>
-            </motion.div>
+            </motion.div> */}
+            
 
+            {/* Club Feature Card */}
             {/* Floating Mini Cards */}
             {[
               { text: '1 Club', position: 'top-32 left-12' },
@@ -214,7 +218,6 @@ export function ContactMap() {
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.8 + index * 0.2, type: "spring" }}
                 animate={{
                   y: [0, -10, 0],
                 }}

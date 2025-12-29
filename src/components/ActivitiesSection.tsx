@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 export function ActivitiesSection() {
   return (
@@ -19,9 +20,9 @@ export function ActivitiesSection() {
                 <p className="text-gray-700 text-xl mb-12 leading-relaxed">
                   Perfect your game on our championship-standard snooker tables. Whether you're a seasoned player or just starting out, enjoy the precision and elegance of this classic sport in our refined environment.
                 </p>
-                <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg">
+                <Link to="/booking" className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg">
                   Book a table
-                </button>
+                </Link>
               </div>
             </motion.div>
 
@@ -106,14 +107,14 @@ export function ActivitiesSection() {
                     WebkitBackfaceVisibility: 'hidden'
                   }}
                 >
-                  <h2 className="text-gray-800 mb-5">Game Arena</h2>
+                  <h2 className="text-gray-900 mb-10 text-5xl">Game Arena</h2>
                   <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                     Step into the future of gaming with our cutting-edge esports arena. High-performance gaming stations, competitive tournaments, and a vibrant community await in our state-of-the-art facility.
                   </p>
                   <div>
-                    <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all">
+                    <Link to="/service/game-arena" className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all">
                       Enter the arena
-                    </button>
+                    </Link>
                   </div>
                 </div>
 
@@ -131,9 +132,9 @@ export function ActivitiesSection() {
                     Join leagues, compete in tournaments, and connect with fellow gamers. Our arena features top-tier equipment, ultra-fast internet, and a professional environment designed for serious competitors.
                   </p>
                   <div>
-                    <button className="px-10 py-4 bg-white text-purple-900 rounded-full hover:bg-[#F5F1E8] transition-all">
+                    <Link to="/service/game-arena" className="inline-block px-10 py-4 bg-white text-purple-900 rounded-full hover:bg-[#F5F1E8] transition-all">
                       Enter the arena
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -154,8 +155,8 @@ export function ActivitiesSection() {
             className="w-full h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl mb-16"
           >
             <img
-              src="https://images.unsplash.com/photo-1725962479542-1be0a6b0d444?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMHN1aXRlJTIwYmVkcm9vbXxlbnwxfHx8fDE3NjYzNzM3MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Luxury Suite"
+              src="https://images.unsplash.com/photo-1542751371-adc38448a05e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxHYW1pbmd8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Gaming Room"
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -172,15 +173,15 @@ export function ActivitiesSection() {
             >
               <div className="h-[280px] rounded-[2rem] overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-500">
                 <img
-                  src="https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjByb29tJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Luxury room interior"
+                  src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxHYW1pbmd8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Gaming room setup"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="h-[280px] rounded-[2rem] overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-500">
                 <img
-                  src="https://images.unsplash.com/photo-1731336478850-6bce7235e320?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob3RlbCUyMGJlZHJvb218ZW58MXx8fHwxNzY2MzU2MDA4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Hotel bedroom"
+                  src="https://images.unsplash.com/photo-1511512578047-dfb367046420?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxHYW1pbmd8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Gaming room"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -195,13 +196,13 @@ export function ActivitiesSection() {
               className="lg:pl-8"
             >
               <div className="bg-white p-12 rounded-[2.5rem] shadow-2xl border border-gray-100">
-                <h2 className="text-gray-900 mb-10 text-5xl">Rooms</h2>
+                <h2 className="text-gray-900 mb-10 text-5xl">Gaming Rooms</h2>
                 <p className="text-gray-700 text-xl mb-12 leading-relaxed">
-                  Extend your visit with our luxurious accommodations. Beautifully appointed rooms with premium amenities ensure you rest in comfort and style after a day of sport and recreation.
+                  Experience our state-of-the-art gaming rooms equipped with high-end PCs, consoles, and VR setups. Perfect for competitive gaming, esports training, or casual play with friends.
                 </p>
-                <button className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg">
-                  Book a room
-                </button>
+                <Link to="/booking" className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg">
+                  Book a gaming room
+                </Link>
               </div>
             </motion.div>
           </div>

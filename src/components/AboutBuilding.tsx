@@ -1,6 +1,14 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
-export function AboutBuilding() {
+interface AboutBuildingProps {
+  heading?: string;
+  subtitle?: string;
+}
+
+export function AboutBuilding({
+  heading = 'Premium facilities designed for you',
+  subtitle = 'Every detail matters when creating spaces for sports and recreation',
+}: AboutBuildingProps) {
   return (
     <section className="bg-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8">
       <div className="max-w-[1400px] mx-auto">
@@ -29,7 +37,7 @@ export function AboutBuilding() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Premium facilities designed for you
+                {heading}
               </motion.h3>
               <motion.p 
                 className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-2xl"
@@ -38,7 +46,7 @@ export function AboutBuilding() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Every detail matters when creating spaces for sports and recreation
+                {subtitle}
               </motion.p>
               <motion.button
                 className="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-white text-purple-900 rounded-full hover:bg-gray-100 transition-colors"

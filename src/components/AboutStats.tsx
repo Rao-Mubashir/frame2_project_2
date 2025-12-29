@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 
 interface StatItemProps {
@@ -73,14 +73,30 @@ function StatItem({ number, label, delay }: StatItemProps) {
   );
 }
 
-export function AboutStats() {
+interface StatsProps {
+  stats?: { number: string; label: string }[];
+}
+
+export function AboutStats({ stats }: StatsProps) {
+  const items =
+    stats ?? [
+      { number: '6', label: 'Premium Facilities' },
+      { number: '5000+', label: 'Happy Visitors' },
+      { number: '50+', label: 'Expert Staff' },
+    ];
+
   return (
     <section className="bg-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8">
       <div className="max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12 md:gap-16">
-          <StatItem number="6" label="Premium Facilities" delay={0} />
-          <StatItem number="5000+" label="Happy Visitors" delay={0.2} />
-          <StatItem number="50+" label="Expert Staff" delay={0.4} />
+          {items.map((item, index) => (
+            <StatItem
+              key={index}
+              number={item.number}
+              label={item.label}
+              delay={index * 0.2}
+            />
+          ))}
         </div>
       </div>
     </section>
