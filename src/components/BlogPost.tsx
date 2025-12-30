@@ -190,7 +190,7 @@ export function BlogPost() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="relative h-[60vh] overflow-hidden">
+      <div className="relative h-[60vh] overflow-hidden pt-16 md:pt-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${post.image})` }}
@@ -205,7 +205,7 @@ export function BlogPost() {
             transition={{ duration: 0.8 }}
             className="text-white"
           >
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-4 mt-6">
               <span className="px-4 py-2 bg-purple-900 text-white text-sm uppercase tracking-wider rounded-full">
                 {post.category}
               </span>
@@ -231,7 +231,7 @@ export function BlogPost() {
       </div>
 
       {/* Content Section */}
-      <div className="bg-[#F5F1E8] py-16">
+      <div className="bg-[#F5F1E8] py-16 mt-16 md:mt-0">
         <div className="max-w-4xl mx-auto px-8">
           <motion.article
             initial={{ opacity: 0, y: 30 }}

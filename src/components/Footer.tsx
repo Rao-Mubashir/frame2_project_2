@@ -29,7 +29,7 @@ const footerLinks = {
       { name: "Snooker", path: "/service/snooker" },
       { name: "Boxing", path: "/service/boxing" },
       { name: "Game Arena", path: "/service/game-arena" },
-      { name: "Rooms", path: "/service/rooms" },
+      { name: "Gaming Rooms", path: "/service/rooms" },
     ],
   },
   contact: {

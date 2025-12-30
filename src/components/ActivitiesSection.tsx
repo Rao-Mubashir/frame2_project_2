@@ -68,7 +68,7 @@ export function ActivitiesSection() {
       </div>
 
       {/* Game Arena Section - Full Width Image with Overlay */}
-      <div className="relative h-[750px]">
+      <div className="relative h-[600px] md:h-[750px]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -80,7 +80,7 @@ export function ActivitiesSection() {
 
         <div className="relative max-w-[1400px] mx-auto px-8 h-full flex items-center">
           <div
-            className="max-w-[550px] w-full h-[420px]"
+            className="max-w-[550px] w-full h-[400px] md:h-[420px]"
             style={{ perspective: '1500px' }}
           >
             <motion.div
@@ -101,18 +101,18 @@ export function ActivitiesSection() {
               >
                 {/* Front of Card */}
                 <div
-                  className="absolute w-full h-full bg-white/95 backdrop-blur-sm p-10 rounded-[2rem] shadow-2xl flex flex-col justify-center"
+                  className="absolute w-full h-full bg-white/95 backdrop-blur-sm p-6 rounded-[2rem] shadow-2xl flex flex-col justify-center items-center text-center"
                   style={{ 
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden'
                   }}
                 >
-                  <h2 className="text-gray-900 mb-10 text-5xl">Game Arena</h2>
-                  <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                    Step into the future of gaming with our cutting-edge esports arena. High-performance gaming stations, competitive tournaments, and a vibrant community await in our state-of-the-art facility.
-                  </p>
-                  <div>
-                    <Link to="/service/game-arena" className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all">
+                  <div className="w-full">
+                    <h2 className="text-gray-900 mb-10 text-5xl">Game Arena</h2>
+                    <p className="text-gray-600 text-base mb-6 leading-relaxed">
+                      Step into the future of gaming with our cutting-edge esports arena. High-performance gaming stations, competitive tournaments, and a vibrant community await in our state-of-the-art facility.
+                    </p>
+                    <Link to="/service/game-arena" className="inline-block px-8 py-3 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all">
                       Enter the arena
                     </Link>
                   </div>
@@ -120,19 +120,19 @@ export function ActivitiesSection() {
 
                 {/* Back of Card */}
                 <div
-                  className="absolute w-full h-full bg-gradient-to-br from-purple-900 to-purple-950 p-10 rounded-[2rem] shadow-2xl flex flex-col justify-center"
+                  className="absolute w-full h-full bg-gradient-to-br from-purple-900 to-purple-950 p-6 rounded-[2rem] shadow-2xl flex flex-col justify-center items-center text-center"
                   style={{ 
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)'
                   }}
                 >
-                  <h2 className="text-white mb-5">Compete at the Highest Level</h2>
-                  <p className="text-white/95 text-lg mb-8 leading-relaxed">
-                    Join leagues, compete in tournaments, and connect with fellow gamers. Our arena features top-tier equipment, ultra-fast internet, and a professional environment designed for serious competitors.
-                  </p>
-                  <div>
-                    <Link to="/service/game-arena" className="inline-block px-10 py-4 bg-white text-purple-900 rounded-full hover:bg-[#F5F1E8] transition-all">
+                  <div className="w-full">
+                    <h2 className="text-white mb-4 text-2xl">Compete at the Highest Level</h2>
+                    <p className="text-white/95 text-base mb-6 leading-relaxed">
+                      Join leagues, compete in tournaments, and connect with fellow gamers. Our arena features top-tier equipment, ultra-fast internet, and a professional environment designed for serious competitors.
+                    </p>
+                    <Link to="/service/game-arena" className="inline-block px-8 py-3 bg-white text-purple-900 rounded-full hover:bg-[#F5F1E8] transition-all">
                       Enter the arena
                     </Link>
                   </div>

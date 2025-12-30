@@ -68,16 +68,10 @@ export function Navbar() {
             {/* Desktop Buttons - Hidden on mobile */}
             <div className="hidden lg:flex gap-3">
               <Link 
-                to="/contact" 
-                className="px-5 xl:px-7 py-2.5 border-2 border-gray-800 text-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all hover:shadow-lg tracking-wide text-sm"
-              >
-                Book Now
-              </Link>
-              <Link 
                 to="/booking" 
                 className="px-5 xl:px-7 py-2.5 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:shadow-lg tracking-wide text-sm"
               >
-                Enquire now
+                Book now
               </Link>
               <Link 
                 to="/profile" 
@@ -87,6 +81,15 @@ export function Navbar() {
                 <User className="w-5 h-5" />
               </Link>
             </div>
+
+            {/* Profile Icon - Visible on small screens */}
+            <Link 
+              to="/profile" 
+              className="lg:hidden w-8 h-8 mr-2 border-2 border-gray-800 text-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all hover:shadow-lg flex items-center justify-center"
+              aria-label="Profile"
+            >
+              <User className="w-4 h-4" />
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -100,15 +103,6 @@ export function Navbar() {
                 <Menu className="w-6 h-6 text-gray-800" />
               )}
             </button>
-
-            {/* Profile Icon - Visible on small screens */}
-            <Link 
-              to="/profile" 
-              className="lg:hidden w-8 h-8 ml-2 border-2 border-gray-800 text-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all hover:shadow-lg flex items-center justify-center"
-              aria-label="Profile"
-            >
-              <User className="w-4 h-4" />
-            </Link>
           </div>
 
           {/* Mobile Menu - Animated */}
@@ -174,18 +168,11 @@ export function Navbar() {
                   {/* Mobile Action Buttons */}
                   <div className="flex flex-col gap-3 pt-4 border-t border-gray-300">
                     <Link 
-                      to="/contact" 
-                      className="w-full py-3 text-center border-2 border-gray-800 text-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all tracking-wide"
-                      onClick={closeMenu}
-                    >
-                      Find a Club
-                    </Link>
-                    <Link 
                       to="/booking" 
                       className="w-full py-3 text-center bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all tracking-wide"
                       onClick={closeMenu}
                     >
-                      Enquire now
+                      Book now
                     </Link>
                   </div>
                 </div>

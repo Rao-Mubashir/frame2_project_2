@@ -485,7 +485,7 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
             >
               <motion.img
                 src="https://images.unsplash.com/photo-1661333587575-25c87c14f398?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWluZyUyMHBvb2wlMjBsdXh1cnl8ZW58MXx8fHwxNzY2NDA1NjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="David Lloyd Club Pool"
+                alt="Frame 2 Complex Pool"
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.8 }}

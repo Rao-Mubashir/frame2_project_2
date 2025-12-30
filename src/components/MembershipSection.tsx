@@ -11,7 +11,7 @@ const reviews = [
     image:
       "https://images.unsplash.com/photo-1723468353356-e18254cd8a63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxneW0lMjByZWNlcHRpb24lMjBkZXNrJTIwd29tYW58ZW58MXx8fHwxNzY2NDI1MTM1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     quote:
-      "The team at David Lloyd Clubs are always fab! Little things like a smiley good morning when arriving make such a difference.",
+      "The team at Frame 2 Complex are always fab! Little things like a smiley good morning when arriving make such a difference.",
     name: "Danielle",
     location: "Frame 2 Complex",
   },
@@ -64,11 +64,11 @@ const reviews = [
 
 // Benefits data
 const benefits = [
-  "Invest in your health so you not only get more years in your life, but more life in your years",
-  "Nurture healthy habits in your family while spending quality time together",
-  "Build strength and boost your mental wellbeing through exercise and mindful activities",
-  "Improve your memory, productivity and creativity with regular exercise and classes",
-  "Network, make friends and enjoy the company of old ones in our Clubrooms and workspaces",
+  "👉 Invest in your health so you not only get more years in your life, but more life in your years",
+  "👉 Nurture healthy habits in your family while spending quality time together",
+  "👉 Build strength and boost your mental wellbeing through exercise and mindful activities",
+  "👉 Improve your memory, productivity and creativity with regular exercise and classes",
+  "👉 Network, make friends and enjoy the company of old ones in our Clubrooms and workspaces",
 ];
 
 export function MembershipSection() {
@@ -122,12 +122,6 @@ export function MembershipSection() {
 
               <div className="flex flex-col gap-4 max-w-[320px]">
                 <Link to="/booking" className="px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all hover:scale-105 transform shadow-lg flex items-center justify-center gap-2 group">
-                  <span>Book Now</span>
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
-                </Link>
-                <Link to="/booking" className="px-10 py-4 bg-transparent text-purple-900 border-2 border-purple-900 rounded-full hover:bg-white transition-all hover:scale-105 transform flex items-center justify-center gap-2 group">
                   <span>Book Now</span>
                   <span className="group-hover:translate-x-1 transition-transform">
                     →
@@ -286,7 +280,7 @@ export function MembershipSection() {
             </h2>
           </motion.div>
 
-          {/* Why join David Lloyd Clubs */}
+          {/* Why join Frame 2 Complex */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
             {/* Left Side - Heading and Buttons */}
             <motion.div

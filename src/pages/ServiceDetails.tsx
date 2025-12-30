@@ -673,7 +673,7 @@ export default function ServiceDetails() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="sticky top-8"
+              className="lg:sticky lg:top-8"
             >
               <div className="rounded-[2.5rem] overflow-hidden shadow-2xl">
                 <img
@@ -772,7 +772,7 @@ export default function ServiceDetails() {
       {serviceId === "swimming" && (
         <>
           {/* Location Finder Section */}
-          <section className="bg-white py-20">
+          <section className="bg-white py-20 mb-8">
             <div className="max-w-[1000px] mx-auto px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -785,30 +785,22 @@ export default function ServiceDetails() {
                   Come and experience it for yourself
                 </h2>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                  {/* Search Input */}
-                  <div className="relative flex-1 w-full">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter a town, city or postcode"
-                      value={searchLocation}
-                      onChange={(e) =>
-                        setSearchLocation(e.target.value)
-                      }
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#8B1538] transition-colors"
-                    />
-                  </div>
-
-                  {/* Find Button */}
-                  <motion.button
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Ready to dive into the ultimate swimming experience? Discover the difference our championship facilities can make in your fitness journey. Book your session today and experience aquatic excellence like never before.
+                  </p>
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg flex items-center gap-2 whitespace-nowrap"
+                    className="flex justify-center"
                   >
-                    <MapPin className="w-5 h-5" />
-                    Find your local Club
-                  </motion.button>
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -824,7 +816,7 @@ export default function ServiceDetails() {
                 transition={{ duration: 0.8 }}
                 className="text-center mb-16"
               >
-                <h2 className="text-gray-700 mb-8">
+                <h2 className="text-gray-700 mb-8 text-4xl font-bold">
                   A swimming facility near you
                 </h2>
                 <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
@@ -832,7 +824,7 @@ export default function ServiceDetails() {
                   our temperature-controlled waters and try out our
                   extensive aquatic facilities. Discover
                   everything you want from a swimming venue,
-                  with our signature David Lloyd Clubs
+                  with our signature Frame 2 Complex
                   excellence throughout.
                 </p>
               </motion.div>
@@ -844,7 +836,7 @@ export default function ServiceDetails() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
                 >
                   {/* Carousel Images */}
                   {facilityImages.map((image, index) => (
@@ -924,7 +916,7 @@ export default function ServiceDetails() {
       {serviceId === "football" && (
         <>
           {/* Location Finder Section */}
-          <section className="bg-white py-20">
+          <section className="bg-white py-20 mb-8">
             <div className="max-w-[1000px] mx-auto px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -937,30 +929,22 @@ export default function ServiceDetails() {
                   Come and experience it for yourself
                 </h2>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                  {/* Search Input */}
-                  <div className="relative flex-1 w-full">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter a town, city or postcode"
-                      value={searchLocation}
-                      onChange={(e) =>
-                        setSearchLocation(e.target.value)
-                      }
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#8B1538] transition-colors"
-                    />
-                  </div>
-
-                  {/* Find Button */}
-                  <motion.button
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Ready to step onto championship-quality pitches? Experience the thrill of professional-grade football facilities designed for players of all levels. Book your session today and elevate your game.
+                  </p>
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg flex items-center gap-2 whitespace-nowrap"
+                    className="flex justify-center"
                   >
-                    <MapPin className="w-5 h-5" />
-                    Find your local Club
-                  </motion.button>
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -984,7 +968,7 @@ export default function ServiceDetails() {
                   our professional-grade pitches and try out our
                   extensive training facilities. Discover
                   everything you want from a football venue,
-                  with our signature David Lloyd Clubs
+                  with our signature Frame 2 Complex
                   excellence throughout.
                 </p>
               </motion.div>
@@ -996,7 +980,7 @@ export default function ServiceDetails() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
                 >
                   {/* Carousel Images */}
                   {facilityImages.map((image, index) => (
@@ -1084,7 +1068,7 @@ export default function ServiceDetails() {
               transition={{ duration: 0.8 }}
               className="text-center mb-20"
             >
-              <h2 className="text-gray-700 mb-6">
+              <h2 className="text-gray-700 mb-6 text-4xl font-bold">
                 Member experiences
               </h2>
               <p className="text-gray-600 text-lg">
@@ -1151,7 +1135,7 @@ export default function ServiceDetails() {
                             Marcus
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Lichfield
+                            Frame 2 Complex Lichfield
                           </p>
                         </div>
                       </div>
@@ -1203,7 +1187,7 @@ export default function ServiceDetails() {
                             Sarah
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Beaconsfield
+                            Frame 2 Complex Beaconsfield
                           </p>
                         </div>
                       </div>
@@ -1255,7 +1239,7 @@ export default function ServiceDetails() {
                             James
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Sheffield
+                            Frame 2 Complex Sheffield
                           </p>
                         </div>
                       </div>
@@ -1306,7 +1290,7 @@ export default function ServiceDetails() {
                             Emma
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Milton Keynes
+                            Frame 2 Complex Milton Keynes
                           </p>
                         </div>
                       </div>
@@ -1351,7 +1335,7 @@ export default function ServiceDetails() {
                             Marcus
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Lichfield
+                            Frame 2 Complex Lichfield
                           </p>
                         </div>
                       </div>
@@ -1396,7 +1380,7 @@ export default function ServiceDetails() {
                             Sarah
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Beaconsfield
+                            Frame 2 Complex Beaconsfield
                           </p>
                         </div>
                       </div>
@@ -1404,10 +1388,6 @@ export default function ServiceDetails() {
                   </div>
                 </div>
               </motion.div>
-
-              {/* Gradient Overlays for fade effect */}
-              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
             </div>
           </div>
         </section>
@@ -1425,7 +1405,7 @@ export default function ServiceDetails() {
               transition={{ duration: 0.8 }}
               className="text-center mb-20"
             >
-              <h2 className="text-gray-700 mb-6">
+              <h2 className="text-gray-700 mb-6 text-4xl font-bold">
                 Member experiences
               </h2>
               <p className="text-gray-600 text-lg">
@@ -1489,7 +1469,7 @@ export default function ServiceDetails() {
                             Alex
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Manchester
+                            Frame 2 Complex Manchester
                           </p>
                         </div>
                       </div>
@@ -1537,7 +1517,7 @@ export default function ServiceDetails() {
                             Sophie
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Birmingham
+                            Frame 2 Complex Birmingham
                           </p>
                         </div>
                       </div>
@@ -1585,7 +1565,7 @@ export default function ServiceDetails() {
                             Michael
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Edinburgh
+                            Frame 2 Complex Edinburgh
                           </p>
                         </div>
                       </div>
@@ -1633,7 +1613,7 @@ export default function ServiceDetails() {
                             Emma
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Glasgow
+                            Frame 2 Complex Glasgow
                           </p>
                         </div>
                       </div>
@@ -1675,7 +1655,7 @@ export default function ServiceDetails() {
                             Alex
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Manchester
+                            Frame 2 Complex Manchester
                           </p>
                         </div>
                       </div>
@@ -1716,7 +1696,7 @@ export default function ServiceDetails() {
                             Sophie
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Birmingham
+                            Frame 2 Complex Birmingham
                           </p>
                         </div>
                       </div>
@@ -1724,10 +1704,6 @@ export default function ServiceDetails() {
                   </div>
                 </div>
               </motion.div>
-
-              {/* Gradient Overlays for fade effect */}
-              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
             </div>
           </div>
         </section>
@@ -1737,7 +1713,7 @@ export default function ServiceDetails() {
       {serviceId === "cricket" && (
         <>
           {/* Location Finder Section */}
-          <section className="bg-white py-20">
+          <section className="bg-white py-20 mb-8">
             <div className="max-w-[1000px] mx-auto px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -1750,30 +1726,22 @@ export default function ServiceDetails() {
                   Come and experience it for yourself
                 </h2>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                  {/* Search Input */}
-                  <div className="relative flex-1 w-full">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter a town, city or postcode"
-                      value={searchLocation}
-                      onChange={(e) =>
-                        setSearchLocation(e.target.value)
-                      }
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-purple-900 transition-colors"
-                    />
-                  </div>
-
-                  {/* Find Button */}
-                  <motion.button
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Ready to step onto championship wickets? Experience the tradition and excitement of cricket on professional-grade pitches and practice nets. Book your session today and join the legacy of cricketing excellence.
+                  </p>
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-900 transition-all shadow-lg flex items-center gap-2 whitespace-nowrap"
+                    className="flex justify-center"
                   >
-                    <MapPin className="w-5 h-5" />
-                    Find your local Club
-                  </motion.button>
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -1797,7 +1765,7 @@ export default function ServiceDetails() {
                   our professional-grade pitches, practice nets,
                   and try out our extensive cricket facilities.
                   Discover everything you want from a cricket
-                  venue, with our signature David Lloyd Clubs
+                  venue, with our signature Frame 2 Complex
                   excellence throughout.
                 </p>
               </motion.div>
@@ -1809,7 +1777,7 @@ export default function ServiceDetails() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
                 >
                   {/* Carousel Images */}
                   {facilityImages.map((image, index) => (
@@ -1897,7 +1865,7 @@ export default function ServiceDetails() {
               transition={{ duration: 0.8 }}
               className="text-center mb-20"
             >
-              <h2 className="text-gray-700 mb-6">
+              <h2 className="text-gray-700 mb-6 text-4xl font-bold">
                 Member experiences
               </h2>
               <p className="text-gray-600 text-lg">
@@ -1964,7 +1932,7 @@ export default function ServiceDetails() {
                             Rajesh
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Birmingham
+                            Frame 2 Complex Birmingham
                           </p>
                         </div>
                       </div>
@@ -2015,7 +1983,7 @@ export default function ServiceDetails() {
                             Charlotte
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Watford
+                            Frame 2 Complex Watford
                           </p>
                         </div>
                       </div>
@@ -2067,7 +2035,7 @@ export default function ServiceDetails() {
                             Amir
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Leeds
+                            Frame 2 Complex Leeds
                           </p>
                         </div>
                       </div>
@@ -2118,7 +2086,7 @@ export default function ServiceDetails() {
                             Sophie
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Manchester
+                            Frame 2 Complex Manchester
                           </p>
                         </div>
                       </div>
@@ -2163,7 +2131,7 @@ export default function ServiceDetails() {
                             Rajesh
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Birmingham
+                            Frame 2 Complex Birmingham
                           </p>
                         </div>
                       </div>
@@ -2207,7 +2175,7 @@ export default function ServiceDetails() {
                             Charlotte
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Watford
+                            Frame 2 Complex Watford
                           </p>
                         </div>
                       </div>
@@ -2215,10 +2183,6 @@ export default function ServiceDetails() {
                   </div>
                 </div>
               </motion.div>
-
-              {/* Gradient Overlays for fade effect */}
-              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
             </div>
           </div>
         </section>
@@ -2228,7 +2192,7 @@ export default function ServiceDetails() {
       {serviceId === "snooker" && (
         <>
           {/* Location Finder Section */}
-          <section className="bg-white py-20">
+          <section className="bg-white py-20 mb-8">
             <div className="max-w-[1000px] mx-auto px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -2241,30 +2205,22 @@ export default function ServiceDetails() {
                   Come and experience it for yourself
                 </h2>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                  {/* Search Input */}
-                  <div className="relative flex-1 w-full">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter a town, city or postcode"
-                      value={searchLocation}
-                      onChange={(e) =>
-                        setSearchLocation(e.target.value)
-                      }
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-purple-900 transition-colors"
-                    />
-                  </div>
-
-                  {/* Find Button */}
-                  <motion.button
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Ready to master the green baize? Experience the precision and elegance of championship-grade snooker tables in our refined atmosphere. Book your session today and elevate your cueing skills.
+                  </p>
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg flex items-center gap-2 whitespace-nowrap"
+                    className="flex justify-center"
                   >
-                    <MapPin className="w-5 h-5" />
-                    Find your local Club
-                  </motion.button>
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -2300,7 +2256,7 @@ export default function ServiceDetails() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
                 >
                   {/* Carousel Images */}
                   {facilityImages.map((image, index) => (
@@ -2388,7 +2344,7 @@ export default function ServiceDetails() {
               transition={{ duration: 0.8 }}
               className="text-center mb-20"
             >
-              <h2 className="text-gray-700 mb-6">
+              <h2 className="text-gray-700 mb-6 text-4xl font-bold">
                 Member experiences
               </h2>
               <p className="text-gray-600 text-lg">
@@ -2456,7 +2412,7 @@ export default function ServiceDetails() {
                             David
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Glasgow
+                            Frame 2 Complex Glasgow
                           </p>
                         </div>
                       </div>
@@ -2508,7 +2464,7 @@ export default function ServiceDetails() {
                             Michael
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Bristol
+                            Frame 2 Complex Bristol
                           </p>
                         </div>
                       </div>
@@ -2559,7 +2515,7 @@ export default function ServiceDetails() {
                             Robert
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Cardiff
+                            Frame 2 Complex Cardiff
                           </p>
                         </div>
                       </div>
@@ -2610,7 +2566,7 @@ export default function ServiceDetails() {
                             Thomas
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Edinburgh
+                            Frame 2 Complex Edinburgh
                           </p>
                         </div>
                       </div>
@@ -2656,7 +2612,7 @@ export default function ServiceDetails() {
                             David
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Glasgow
+                            Frame 2 Complex Glasgow
                           </p>
                         </div>
                       </div>
@@ -2701,7 +2657,7 @@ export default function ServiceDetails() {
                             Michael
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Bristol
+                            Frame 2 Complex Bristol
                           </p>
                         </div>
                       </div>
@@ -2709,10 +2665,6 @@ export default function ServiceDetails() {
                   </div>
                 </div>
               </motion.div>
-
-              {/* Gradient Overlays for fade effect */}
-              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
             </div>
           </div>
         </section>
@@ -2722,7 +2674,7 @@ export default function ServiceDetails() {
       {serviceId === "boxing" && (
         <>
           {/* Location Finder Section */}
-          <section className="bg-white py-20">
+          <section className="bg-white py-20 mb-8">
             <div className="max-w-[1000px] mx-auto px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -2735,28 +2687,22 @@ export default function ServiceDetails() {
                   Come and experience it for yourself
                 </h2>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                  <div className="relative flex-1 w-full">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter a town, city or postcode"
-                      value={searchLocation}
-                      onChange={(e) =>
-                        setSearchLocation(e.target.value)
-                      }
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-purple-900 transition-colors"
-                    />
-                  </div>
-
-                  <motion.button
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Ready to step into the ring? Experience the power and discipline of boxing in our professional gym with championship rings and expert coaching. Book your session today and unleash your inner champion.
+                  </p>
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-purple-900 text-white rounded-full hover:bg--purple-950 transition-all shadow-lg flex items-center gap-2 whitespace-nowrap"
+                    className="flex justify-center"
                   >
-                    <MapPin className="w-5 h-5" />
-                    Find your local Club
-                  </motion.button>
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -2779,8 +2725,7 @@ export default function ServiceDetails() {
                   Step into our professional boxing gym. Explore
                   our championship rings, premium equipment, and
                   expert coaching. Discover everything you want
-                  from a boxing venue, with our signature David
-                  Lloyd Clubs excellence throughout.
+                  from a boxing venue, with our signature Frame 2 Complex excellence throughout.
                 </p>
               </motion.div>
 
@@ -2790,7 +2735,7 @@ export default function ServiceDetails() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
                 >
                   {facilityImages.map((image, index) => (
                     <motion.div
@@ -2874,7 +2819,7 @@ export default function ServiceDetails() {
               transition={{ duration: 0.8 }}
               className="text-center mb-20"
             >
-              <h2 className="text-gray-700 mb-6">
+              <h2 className="text-gray-700 mb-6 text-4xl font-bold">
                 Member experiences
               </h2>
               <p className="text-gray-600 text-lg">
@@ -2941,7 +2886,7 @@ export default function ServiceDetails() {
                             Marcus
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Manchester
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -2993,7 +2938,7 @@ export default function ServiceDetails() {
                             James
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Birmingham
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3045,7 +2990,7 @@ export default function ServiceDetails() {
                             Daniel
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Leeds
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3097,7 +3042,7 @@ export default function ServiceDetails() {
                             Ryan
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd London
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3142,7 +3087,7 @@ export default function ServiceDetails() {
                             Marcus
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Manchester
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3186,7 +3131,7 @@ export default function ServiceDetails() {
                             James
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Birmingham
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3194,9 +3139,6 @@ export default function ServiceDetails() {
                   </div>
                 </div>
               </motion.div>
-
-              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
             </div>
           </div>
         </section>
@@ -3205,7 +3147,7 @@ export default function ServiceDetails() {
       {/* Come and Experience Section - Only for Game Arena */}
       {serviceId === "game-arena" && (
         <>
-          <section className="bg-white py-20">
+          <section className="bg-white py-20 mb-8">
             <div className="max-w-[1000px] mx-auto px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -3218,28 +3160,22 @@ export default function ServiceDetails() {
                   Come and experience it for yourself
                 </h2>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                  <div className="relative flex-1 w-full">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter a town, city or postcode"
-                      value={searchLocation}
-                      onChange={(e) =>
-                        setSearchLocation(e.target.value)
-                      }
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#8B1538] transition-colors"
-                    />
-                  </div>
-
-                  <motion.button
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Ready to level up your gaming experience? Enter our cutting-edge esports arena with high-performance stations, competitive setups, and a vibrant community. Book your gaming session today and dominate the digital battlefield.
+                  </p>
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg flex items-center gap-2 whitespace-nowrap"
+                    className="flex justify-center"
                   >
-                    <MapPin className="w-5 h-5" />
-                    Find your local Club
-                  </motion.button>
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -3262,7 +3198,7 @@ export default function ServiceDetails() {
                   our high-performance gaming stations,
                   tournament setup, and vibrant community.
                   Discover everything you want from a gaming
-                  venue, with our signature David Lloyd Clubs
+                  venue, with our signature Frame 2 Complex
                   excellence throughout.
                 </p>
               </motion.div>
@@ -3273,7 +3209,7 @@ export default function ServiceDetails() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
                 >
                   {facilityImages.map((image, index) => (
                     <motion.div
@@ -3357,7 +3293,7 @@ export default function ServiceDetails() {
               transition={{ duration: 0.8 }}
               className="text-center mb-20"
             >
-              <h2 className="text-gray-700 mb-6">
+              <h2 className="text-gray-700 mb-6 text-4xl font-bold">
                 Member experiences
               </h2>
               <p className="text-gray-600 text-lg">
@@ -3422,7 +3358,7 @@ export default function ServiceDetails() {
                             Alex
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd London
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3473,7 +3409,7 @@ export default function ServiceDetails() {
                             Jordan
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Manchester
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3524,7 +3460,7 @@ export default function ServiceDetails() {
                             Tyler
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Birmingham
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3574,7 +3510,7 @@ export default function ServiceDetails() {
                             Chris
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Bristol
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3618,7 +3554,7 @@ export default function ServiceDetails() {
                             Alex
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd London
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3662,7 +3598,7 @@ export default function ServiceDetails() {
                             Jordan
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Manchester
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3671,8 +3607,6 @@ export default function ServiceDetails() {
                 </div>
               </motion.div>
 
-              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
             </div>
           </div>
         </section>
@@ -3681,7 +3615,7 @@ export default function ServiceDetails() {
       {/* Come and Experience Section - Only for Rooms */}
       {serviceId === "rooms" && (
         <>
-          <section className="bg-white py-20">
+          <section className="bg-white py-20 mb-8">
             <div className="max-w-[1000px] mx-auto px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -3694,28 +3628,22 @@ export default function ServiceDetails() {
                   Come and experience it for yourself
                 </h2>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                  <div className="relative flex-1 w-full">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter a town, city or postcode"
-                      value={searchLocation}
-                      onChange={(e) =>
-                        setSearchLocation(e.target.value)
-                      }
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-purple-900 transition-colors"
-                    />
-                  </div>
-
-                  <motion.button
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Discover unparalleled luxury in our premium rooms. Indulge in elegantly designed suites with modern amenities, exceptional comfort, and the signature Frame 2 Complex excellence. Book your stay today and experience hospitality redefined.
+                  </p>
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg flex items-center gap-2 whitespace-nowrap"
+                    className="flex justify-center"
                   >
-                    <MapPin className="w-5 h-5" />
-                    Find your local Club
-                  </motion.button>
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -3731,14 +3659,14 @@ export default function ServiceDetails() {
                 className="text-center mb-16"
               >
                 <h2 className="text-gray-700 mb-8">
-                  Luxurious accommodation near you
+                  Luxurious Gaming rooms near you
                 </h2>
                 <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
                   Step into our premium rooms. Explore our
                   elegantly designed suites, modern amenities,
                   and exceptional comfort. Discover everything
                   you want from luxury accommodation, with our
-                  signature David Lloyd Clubs excellence
+                  signature Frame 2 Complex excellence
                   throughout.
                 </p>
               </motion.div>
@@ -3749,7 +3677,7 @@ export default function ServiceDetails() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
                 >
                   {facilityImages.map((image, index) => (
                     <motion.div
@@ -3899,7 +3827,7 @@ export default function ServiceDetails() {
                             Sophie
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Oxford
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -3950,7 +3878,7 @@ export default function ServiceDetails() {
                             Emma
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Cambridge
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -4001,7 +3929,7 @@ export default function ServiceDetails() {
                             Charlotte
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Edinburgh
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -4052,7 +3980,7 @@ export default function ServiceDetails() {
                             Victoria
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Bath
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -4097,7 +4025,7 @@ export default function ServiceDetails() {
                             Sophie
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Oxford
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -4141,7 +4069,7 @@ export default function ServiceDetails() {
                             Emma
                           </p>
                           <p className="text-gray-500 text-sm">
-                            David Lloyd Cambridge
+                            Frame 2 Complex
                           </p>
                         </div>
                       </div>
@@ -4150,8 +4078,6 @@ export default function ServiceDetails() {
                 </div>
               </motion.div>
 
-              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
             </div>
           </div>
         </section>

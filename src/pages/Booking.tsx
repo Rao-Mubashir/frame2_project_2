@@ -56,7 +56,7 @@ export default function Booking() {
             </motion.div>
             <h2 className="text-gray-900 mb-6">Booking Confirmed!</h2>
             <p className="text-gray-600 text-xl mb-8 leading-relaxed">
-              Thank you for registering with David Lloyd Clubs. We'll be in touch shortly to confirm your booking details.
+              Thank you for registering with Frame 2 Complex. We'll be in touch shortly to confirm your booking details.
             </p>
             <button
               onClick={() => window.location.href = '/'}
@@ -83,9 +83,9 @@ export default function Booking() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-gray-900 mb-6">Book Your Experience</h1>
+            <h1 className="text-gray-900 mb-6 text-4xl font-bold">Book Your Experience</h1>
             <p className="text-gray-600 text-xl max-w-2xl mx-auto leading-relaxed">
-              Join the David Lloyd Clubs community and elevate your sporting journey. Complete the form below to get started.
+              Join the Frame 2 Complex community and elevate your sporting journey. Complete the form below to get started.
             </p>
           </motion.div>
 
