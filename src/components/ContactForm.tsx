@@ -74,7 +74,8 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
     setStatus('submitting');
 
     try {
-      await axios.post('http://localhost:8000/api/contact/query', formData);
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      await axios.post(`${baseUrl}/api/contact/query`, formData);
       setStatus('success');
       setFormData({
         firstName: "",

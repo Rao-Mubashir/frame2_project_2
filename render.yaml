@@ -1,0 +1,65 @@
+services:
+  # Laravel Backend (Web Service)
+  - type: web
+    name: frame2-backend
+    env: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
+    region: frankfurt
+    envVars:
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_ENV
+        value: production
+      - key: APP_URL
+        fromService:
+          type: web
+          name: frame2-backend
+          property: url
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromService:
+          type: psql
+          name: frame2-db
+          property: host
+      - key: DB_PORT
+        value: 5432
+      - key: DB_DATABASE
+        fromService:
+          type: psql
+          name: frame2-db
+          property: name
+      - key: DB_USERNAME
+        fromService:
+          type: psql
+          name: frame2-db
+          property: user
+      - key: DB_PASSWORD
+        fromService:
+          type: psql
+          name: frame2-db
+          property: password
+
+  # React Frontend (Static Site)
+  - type: static
+    name: frame2-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    plan: free
+    region: frankfurt
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: frame2-backend
+          property: url
+
+databases:
+  - name: frame2-db
+    plan: free
+    region: frankfurt
+    databaseName: frame2_db
+    user: frame2_user
