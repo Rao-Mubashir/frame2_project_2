@@ -43,8 +43,9 @@ services:
           property: password
 
   # React Frontend (Static Site)
-  - type: static
+  - type: web
     name: frame2-frontend
+    env: static
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     plan: free
