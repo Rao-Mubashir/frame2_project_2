@@ -1,3 +1,12 @@
+version: 1
+
+databases:
+  - name: frame2-db
+    plan: free
+    region: frankfurt
+    databaseName: frame2_db
+    user: frame2_user
+
 services:
   # Laravel Backend (Web Service)
   - type: web
@@ -18,26 +27,6 @@ services:
         fromDatabase:
           name: frame2-db
           property: connectionString
-      - key: DB_HOST
-        fromDatabase:
-          name: frame2-db
-          property: host
-      - key: DB_PORT
-        fromDatabase:
-          name: frame2-db
-          property: port
-      - key: DB_DATABASE
-        fromDatabase:
-          name: frame2-db
-          property: database
-      - key: DB_USERNAME
-        fromDatabase:
-          name: frame2-db
-          property: user
-      - key: DB_PASSWORD
-        fromDatabase:
-          name: frame2-db
-          property: password
 
   # React Frontend (Static Site)
   - type: web
@@ -51,10 +40,3 @@ services:
           type: web
           name: frame2-backend
           property: host
-
-databases:
-  - name: frame2-db
-    plan: free
-    region: frankfurt
-    databaseName: frame2_db
-    user: frame2_user
