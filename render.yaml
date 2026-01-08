@@ -45,12 +45,10 @@ services:
           property: password
 
   # React Frontend (Static Site)
-  - type: web
+  - type: static
     name: frame2-frontend
-    env: static
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
-    plan: free
+    publishPath: ./dist
     envVars:
       - key: VITE_API_URL
         fromService:
