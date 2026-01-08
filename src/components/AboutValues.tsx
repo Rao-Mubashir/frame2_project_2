@@ -45,8 +45,8 @@ export function AboutValues({ heading = 'Our Values', values }: AboutValuesProps
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <img 
-              src="https://images.unsplash.com/photo-1706036957257-1be06faf7486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBzd2ltbWluZyUyMHBvb2wlMjBpbmRvb3J8ZW58MXx8fHwxNzY2NDMxMzcyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            <img
+              src="/images/leisure-rooms/IR5A8681.jpg"
               alt="Frame 2 Complex Facilities"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
@@ -61,7 +61,7 @@ export function AboutValues({ heading = 'Our Values', values }: AboutValuesProps
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-3xl sm:text-4xl md:text-5xl mb-8 sm:mb-10 md:mb-12 text-gray-800"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export function AboutValues({ heading = 'Our Values', values }: AboutValuesProps
                     whileHover={{ x: 10 }}
                   >
                     <div className="flex-shrink-0">
-                      <motion.div 
+                      <motion.div
                         className="w-11 h-11 sm:w-12 sm:h-12 bg-purple-900 rounded-full flex items-center justify-center group-hover/item:bg-purple-950 transition-colors"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.3 }}

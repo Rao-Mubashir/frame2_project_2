@@ -1,39 +1,215 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form@7.55.0';
-import { Eye, EyeOff, CheckCircle2, AlertCircle } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { Eye, EyeOff, CheckCircle2, AlertCircle, Calendar, Clock } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import axios from 'axios';
+
+const API_BASE_URL = 'http://localhost:8000/api';
 
 type BookingFormData = {
+  category_id: string;
+  sub_category_id: string;
+  instance_id: string;
+  booking_date: string;
+  time_slot: string;
+  name?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+};
+
+type Category = {
+  id: number;
   name: string;
-  phone: string;
-  password: string;
-  confirmPassword: string;
-  skillLevel: string;
-  availableForPublicGames: boolean;
-  availabilityDate?: string;
-  availabilityTime?: string;
+  slug: string;
+};
+
+type SubCategory = {
+  id: number;
+  name: string;
+  price_per_hour: number;
+};
+
+type Instance = {
+  id: number;
+  name: string;
+  identifier: string;
+};
+
+type TimeSlot = {
+  start: string;
+  end: string;
+  label: string;
 };
 
 export default function Booking() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // Data states
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
+  const [instances, setInstances] = useState<Instance[]>([]);
+  const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
+  const [selectedPrice, setSelectedPrice] = useState<number>(0);
 
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
+    setValue,
   } = useForm<BookingFormData>();
 
   const password = watch('password');
+  const categoryId = watch('category_id');
+  const subCategoryId = watch('sub_category_id');
+  const instanceId = watch('instance_id');
+  const bookingDate = watch('booking_date');
 
-  const onSubmit = (data: BookingFormData) => {
-    console.log('Form submitted:', data);
-    setIsSubmitted(true);
-    // Here you would typically send the data to your backend
+  // Check authentication on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (token) {
+          const response = await axios.get(`${API_BASE_URL}/user`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          if (response.data) {
+            setIsAuthenticated(true);
+          }
+        }
+      } catch (err) {
+        setIsAuthenticated(false);
+      }
+    };
+    checkAuth();
+  }, []);
+
+  // Fetch categories on mount
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/categories`);
+        setCategories(response.data);
+      } catch (err) {
+        console.error('Error fetching categories:', err);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  // Fetch sub-categories when category changes
+  useEffect(() => {
+    if (categoryId) {
+      const fetchSubCategories = async () => {
+        try {
+          const response = await axios.get(`${API_BASE_URL}/categories/${categoryId}/sub-categories`);
+          const seenNames = new Set();
+          const uniqueSubCats = response.data.filter((item: SubCategory) => {
+            if (seenNames.has(item.name)) return false;
+            seenNames.add(item.name);
+            return true;
+          });
+          setSubCategories(uniqueSubCats as SubCategory[]);
+          setInstances([]);
+          setTimeSlots([]);
+          setValue('sub_category_id', '');
+          setValue('instance_id', '');
+        } catch (err) {
+          console.error('Error fetching sub-categories:', err);
+        }
+      };
+      fetchSubCategories();
+    }
+  }, [categoryId, setValue]);
+
+  // Fetch instances when sub-category changes
+  useEffect(() => {
+    if (subCategoryId) {
+      const fetchInstances = async () => {
+        try {
+          const response = await axios.get(`${API_BASE_URL}/sub-categories/${subCategoryId}/instances`);
+          setInstances(response.data);
+          setTimeSlots([]);
+          setValue('instance_id', '');
+
+          // Set price
+          const subCat = subCategories.find(sc => sc.id === parseInt(subCategoryId));
+          if (subCat) {
+            setSelectedPrice(subCat.price_per_hour);
+          }
+        } catch (err) {
+          console.error('Error fetching instances:', err);
+        }
+      };
+      fetchInstances();
+    }
+  }, [subCategoryId, setValue, subCategories]);
+
+  // Fetch time slots when instance and date are selected
+  useEffect(() => {
+    if (instanceId && bookingDate) {
+      const fetchTimeSlots = async () => {
+        try {
+          const response = await axios.get(`${API_BASE_URL}/bookings/available-slots`, {
+            params: { instance_id: instanceId, date: bookingDate }
+          });
+          setTimeSlots(response.data.slots || []);
+        } catch (err) {
+          console.error('Error fetching time slots:', err);
+        }
+      };
+      fetchTimeSlots();
+    }
+  }, [instanceId, bookingDate]);
+
+  const onSubmit = async (data: BookingFormData) => {
+    setLoading(true);
+    setError('');
+
+    try {
+      const [startTime, endTime] = data.time_slot.split('-');
+
+      const bookingData = {
+        category_id: data.category_id,
+        sub_category_id: data.sub_category_id,
+        instance_id: data.instance_id,
+        booking_date: data.booking_date,
+        start_time: startTime.trim(),
+        end_time: endTime.trim(),
+        ...((!isAuthenticated) && {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        })
+      };
+
+      const token = localStorage.getItem('token');
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+      const response = await axios.post(`${API_BASE_URL}/bookings`, bookingData, { headers });
+
+      // If new user was created, save token
+      if (response.data.user && !isAuthenticated) {
+        // You might want to get a token from the response
+        setIsAuthenticated(true);
+      }
+
+      setIsSubmitted(true);
+    } catch (err: any) {
+      setError(err.response?.data?.error || err.response?.data?.message || 'Booking failed. Please try again.');
+      console.error('Booking error:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -56,7 +232,7 @@ export default function Booking() {
             </motion.div>
             <h2 className="text-gray-900 mb-6">Booking Confirmed!</h2>
             <p className="text-gray-600 text-xl mb-8 leading-relaxed">
-              Thank you for registering with Frame 2 Complex. We'll be in touch shortly to confirm your booking details.
+              Your booking has been successfully confirmed. We look forward to seeing you at Frame 2 Complex!
             </p>
             <button
               onClick={() => window.location.href = '/'}
@@ -75,7 +251,7 @@ export default function Booking() {
     <>
       <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-[#F5F1E8] via-white to-[#FAF8F4] py-20 px-4">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
@@ -85,7 +261,7 @@ export default function Booking() {
           >
             <h1 className="text-gray-900 mb-6 text-4xl font-bold">Book Your Experience</h1>
             <p className="text-gray-600 text-xl max-w-2xl mx-auto leading-relaxed">
-              Join the Frame 2 Complex community and elevate your sporting journey. Complete the form below to get started.
+              Select your preferred activity, date, and time slot to complete your booking.
             </p>
           </motion.div>
 
@@ -97,236 +273,321 @@ export default function Booking() {
             className="bg-white rounded-[3rem] shadow-2xl p-12 border border-gray-100"
           >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-              {/* Name Field */}
-              <div>
-                <label htmlFor="name" className="block text-gray-800 mb-3 text-lg">
-                  Full Name <span className="text-purple-900">*</span>
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  {...register('name', { required: 'Name is required' })}
-                  className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 ${
-                    errors.name ? 'border-red-500' : 'border-transparent'
-                  }`}
-                  placeholder="Enter your full name"
-                />
-                {errors.name && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-600 text-sm mt-2 flex items-center gap-2"
-                  >
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.name.message}
-                  </motion.p>
-                )}
-              </div>
+              {/* Error Message */}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-red-50 border-2 border-red-200 rounded-2xl p-4 flex items-center gap-3"
+                >
+                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+                  <p className="text-red-800">{error}</p>
+                </motion.div>
+              )}
 
-              {/* Phone Field */}
+              {/* Category Selection */}
               <div>
-                <label htmlFor="phone" className="block text-gray-800 mb-3 text-lg">
-                  Phone Number <span className="text-purple-900">*</span>
-                </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  {...register('phone', {
-                    required: 'Phone number is required',
-                    pattern: {
-                      value: /^[\d\s\-\+\(\)]+$/,
-                      message: 'Please enter a valid phone number',
-                    },
-                    minLength: {
-                      value: 10,
-                      message: 'Phone number must be at least 10 digits',
-                    },
-                  })}
-                  className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 ${
-                    errors.phone ? 'border-red-500' : 'border-transparent'
-                  }`}
-                  placeholder="Enter your phone number"
-                />
-                {errors.phone && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-600 text-sm mt-2 flex items-center gap-2"
-                  >
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.phone.message}
-                  </motion.p>
-                )}
-              </div>
-
-              {/* Password Field */}
-              <div>
-                <label htmlFor="password" className="block text-gray-800 mb-3 text-lg">
-                  Password <span className="text-purple-900">*</span>
-                </label>
-                <div className="relative">
-                  <input
-                    id="password"
-                    type={showPassword ? 'text' : 'password'}
-                    {...register('password', {
-                      required: 'Password is required',
-                      minLength: {
-                        value: 8,
-                        message: 'Password must be at least 8 characters',
-                      },
-                      pattern: {
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-                        message: 'Password must contain uppercase, lowercase, and number',
-                      },
-                    })}
-                    className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 pr-14 ${
-                      errors.password ? 'border-red-500' : 'border-transparent'
-                    }`}
-                    placeholder="Enter your password"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
-                  >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                  </button>
-                </div>
-                {errors.password && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-600 text-sm mt-2 flex items-center gap-2"
-                  >
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.password.message}
-                  </motion.p>
-                )}
-                <p className="text-gray-500 text-sm mt-2">
-                  Minimum 8 characters with uppercase, lowercase, and number
-                </p>
-              </div>
-
-              {/* Confirm Password Field */}
-              <div>
-                <label htmlFor="confirmPassword" className="block text-gray-800 mb-3 text-lg">
-                  Confirm Password <span className="text-purple-900">*</span>
-                </label>
-                <div className="relative">
-                  <input
-                    id="confirmPassword"
-                    type={showConfirmPassword ? 'text' : 'password'}
-                    {...register('confirmPassword', {
-                      required: 'Please confirm your password',
-                      validate: (value) => value === password || 'Passwords do not match',
-                    })}
-                    className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 pr-14 ${
-                      errors.confirmPassword ? 'border-red-500' : 'border-transparent'
-                    }`}
-                    placeholder="Confirm your password"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
-                  >
-                    {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                  </button>
-                </div>
-                {errors.confirmPassword && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-600 text-sm mt-2 flex items-center gap-2"
-                  >
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.confirmPassword.message}
-                  </motion.p>
-                )}
-              </div>
-
-              {/* Skill Level Dropdown */}
-              <div>
-                <label htmlFor="skillLevel" className="block text-gray-800 mb-3 text-lg">
-                  Skill Level <span className="text-purple-900">*</span>
+                <label htmlFor="category" className="block text-gray-800 mb-3 text-lg font-medium">
+                  Select Category <span className="text-purple-900">*</span>
                 </label>
                 <select
-                  id="skillLevel"
-                  {...register('skillLevel', { required: 'Please select your skill level' })}
-                  className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 cursor-pointer ${
-                    errors.skillLevel ? 'border-red-500' : 'border-transparent'
-                  }`}
+                  id="category"
+                  {...register('category_id', { required: 'Please select a category' })}
+                  className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 cursor-pointer ${errors.category_id ? 'border-red-500' : 'border-transparent'
+                    }`}
                 >
-                  <option value="">Select your skill level</option>
-                  <option value="standard">Standard Player</option>
-                  <option value="intermediate">Intermediate</option>
-                  <option value="pro">Pro</option>
+                  <option value="">Choose a category...</option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>{cat.name}</option>
+                  ))}
                 </select>
-                {errors.skillLevel && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-600 text-sm mt-2 flex items-center gap-2"
-                  >
+                {errors.category_id && (
+                  <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
                     <AlertCircle className="w-4 h-4" />
-                    {errors.skillLevel.message}
-                  </motion.p>
+                    {errors.category_id.message}
+                  </p>
                 )}
               </div>
 
-              {/* Available for Public Games Checkbox */}
-              <div className="bg-[#F5F1E8] rounded-2xl p-6">
-                <label className="flex items-start gap-4 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    {...register('availableForPublicGames')}
-                    className="mt-1 w-5 h-5 text-purple-900 bg-white border-2 border-gray-300 rounded focus:ring-2 focus:ring-purple-900 cursor-pointer"
-                  />
-                  <div>
-                    <span className="text-gray-800 text-lg block mb-1">
-                      Available for Public Games
-                    </span>
-                    <span className="text-gray-600 text-sm">
-                      Allow other members to invite you to public games and events
-                    </span>
-                  </div>
-                </label>
-              </div>
+              {/* Sub-Category Selection */}
+              {categoryId && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <label htmlFor="sub_category" className="block text-gray-800 mb-3 text-lg font-medium">
+                    Select Service Type <span className="text-purple-900">*</span>
+                  </label>
+                  <select
+                    id="sub_category"
+                    {...register('sub_category_id', { required: 'Please select a service type' })}
+                    className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 cursor-pointer ${errors.sub_category_id ? 'border-red-500' : 'border-transparent'
+                      }`}
+                  >
+                    <option value="">Choose a service...</option>
+                    {subCategories.map((subCat) => (
+                      <option key={subCat.id} value={subCat.id}>
+                        {subCat.name}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.sub_category_id && (
+                    <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.sub_category_id.message}
+                    </p>
+                  )}
+                </motion.div>
+              )}
 
-              {/* Availability Date and Time */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="availabilityDate" className="block text-gray-800 mb-3 text-lg">
-                    Preferred Date
+              {/* Instance Selection */}
+              {subCategoryId && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <label htmlFor="instance" className="block text-gray-800 mb-3 text-lg font-medium">
+                    Select Specific Unit <span className="text-purple-900">*</span>
                   </label>
-                  <input
-                    id="availabilityDate"
-                    type="date"
-                    {...register('availabilityDate')}
-                    className="w-full px-6 py-4 bg-[#F5F1E8] border-2 border-transparent rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="availabilityTime" className="block text-gray-800 mb-3 text-lg">
-                    Preferred Time
+                  <select
+                    id="instance"
+                    {...register('instance_id', { required: 'Please select a unit' })}
+                    className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 cursor-pointer ${errors.instance_id ? 'border-red-500' : 'border-transparent'
+                      }`}
+                  >
+                    <option value="">Choose a unit...</option>
+                    {instances.map((inst) => (
+                      <option key={inst.id} value={inst.id}>
+                        {inst.name} ({inst.identifier})
+                      </option>
+                    ))}
+                  </select>
+                  {errors.instance_id && (
+                    <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.instance_id.message}
+                    </p>
+                  )}
+                </motion.div>
+              )}
+
+              {/* Date Selection */}
+              {instanceId && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <label htmlFor="booking_date" className="block text-gray-800 mb-3 text-lg font-medium">
+                    Select Date <span className="text-purple-900">*</span>
                   </label>
-                  <input
-                    id="availabilityTime"
-                    type="time"
-                    {...register('availabilityTime')}
-                    className="w-full px-6 py-4 bg-[#F5F1E8] border-2 border-transparent rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800"
-                  />
+                  <div className="relative">
+                    <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+                    <input
+                      id="booking_date"
+                      type="date"
+                      min={new Date().toISOString().split('T')[0]}
+                      {...register('booking_date', { required: 'Please select a date' })}
+                      className={`w-full pl-14 pr-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 ${errors.booking_date ? 'border-red-500' : 'border-transparent'
+                        }`}
+                    />
+                  </div>
+                  {errors.booking_date && (
+                    <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.booking_date.message}
+                    </p>
+                  )}
+                </motion.div>
+              )}
+
+              {/* Time Slot Selection */}
+              {bookingDate && timeSlots.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <label className="block text-gray-800 mb-3 text-lg font-medium">
+                    Select Time Slot <span className="text-purple-900">*</span>
+                  </label>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    {timeSlots.map((slot, index) => (
+                      <label
+                        key={index}
+                        className="relative cursor-pointer"
+                      >
+                        <input
+                          type="radio"
+                          value={`${slot.start}-${slot.end}`}
+                          {...register('time_slot', { required: 'Please select a time slot' })}
+                          className="peer sr-only"
+                        />
+                        <div className="px-4 py-3 bg-[#F5F1E8] border-2 border-transparent rounded-xl text-center transition-all peer-checked:border-purple-900 peer-checked:bg-purple-50 hover:border-purple-300">
+                          <Clock className="w-4 h-4 mx-auto mb-1 text-gray-600 peer-checked:text-purple-900" />
+                          <p className="text-sm font-medium text-gray-800">{slot.label}</p>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                  {errors.time_slot && (
+                    <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.time_slot.message}
+                    </p>
+                  )}
+                </motion.div>
+              )}
+
+              {bookingDate && timeSlots.length === 0 && instanceId && (
+                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-4">
+                  <p className="text-yellow-800">No available time slots for this date. Please select a different date.</p>
                 </div>
-              </div>
+              )}
+
+              {/* User Information - Only if not authenticated */}
+              {!isAuthenticated && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="border-t-2 border-gray-200 pt-8 space-y-6"
+                >
+                  <h3 className="text-gray-900 text-2xl font-bold mb-6">Your Information</h3>
+
+                  {/* Name */}
+                  <div>
+                    <label htmlFor="name" className="block text-gray-800 mb-3 text-lg">
+                      Full Name <span className="text-purple-900">*</span>
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      {...register('name', { required: !isAuthenticated && 'Name is required' })}
+                      className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 ${errors.name ? 'border-red-500' : 'border-transparent'
+                        }`}
+                      placeholder="Enter your full name"
+                    />
+                    {errors.name && (
+                      <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4" />
+                        {errors.name.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label htmlFor="email" className="block text-gray-800 mb-3 text-lg">
+                      Email <span className="text-purple-900">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      {...register('email', {
+                        required: !isAuthenticated && 'Email is required',
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: 'Invalid email address'
+                        }
+                      })}
+                      className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 ${errors.email ? 'border-red-500' : 'border-transparent'
+                        }`}
+                      placeholder="Enter your email"
+                    />
+                    {errors.email && (
+                      <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4" />
+                        {errors.email.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Password */}
+                  <div>
+                    <label htmlFor="password" className="block text-gray-800 mb-3 text-lg">
+                      Password <span className="text-purple-900">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="password"
+                        type={showPassword ? 'text' : 'password'}
+                        {...register('password', {
+                          required: !isAuthenticated && 'Password is required',
+                          minLength: {
+                            value: 8,
+                            message: 'Password must be at least 8 characters',
+                          },
+                        })}
+                        className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 pr-14 ${errors.password ? 'border-red-500' : 'border-transparent'
+                          }`}
+                        placeholder="Create a password"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
+                      >
+                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                    {errors.password && (
+                      <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4" />
+                        {errors.password.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Confirm Password */}
+                  <div>
+                    <label htmlFor="confirmPassword" className="block text-gray-800 mb-3 text-lg">
+                      Confirm Password <span className="text-purple-900">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="confirmPassword"
+                        type={showConfirmPassword ? 'text' : 'password'}
+                        {...register('confirmPassword', {
+                          required: !isAuthenticated && 'Please confirm your password',
+                          validate: (value) => !isAuthenticated && (value === password || 'Passwords do not match'),
+                        })}
+                        className={`w-full px-6 py-4 bg-[#F5F1E8] border-2 rounded-2xl focus:outline-none focus:border-purple-900 transition-colors text-gray-800 pr-14 ${errors.confirmPassword ? 'border-red-500' : 'border-transparent'
+                          }`}
+                        placeholder="Confirm your password"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
+                      >
+                        {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                    {errors.confirmPassword && (
+                      <p className="text-red-600 text-sm mt-2 flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4" />
+                        {errors.confirmPassword.message}
+                      </p>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Price Display */}
+
 
               {/* Submit Button */}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-5 bg-purple-900 text-white rounded-2xl hover:bg-purple-950 transition-all shadow-lg text-lg"
+                disabled={loading}
+                whileHover={{ scale: loading ? 1 : 1.02 }}
+                whileTap={{ scale: loading ? 1 : 0.98 }}
+                className={`w-full py-5 bg-purple-900 text-white rounded-2xl hover:bg-purple-950 transition-all shadow-lg text-lg font-medium ${loading ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
-                Complete Booking
+                {loading ? 'Processing...' : 'Complete Booking'}
               </motion.button>
             </form>
           </motion.div>

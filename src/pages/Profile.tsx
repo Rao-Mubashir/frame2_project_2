@@ -4,29 +4,46 @@ import { useAuth } from '../contexts/AuthContext';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { motion } from 'framer-motion';
-import { Pencil } from 'lucide-react';
+import {
+  Camera,
+  User,
+  Mail,
+  Lock,
+  Save,
+  LogOut,
+  Shield,
+  CheckCircle,
+  AlertCircle
+} from 'lucide-react';
 
 export default function Profile() {
   const { user, login, register, logout, updateProfile, loading } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
+  const [activeTab, setActiveTab] = useState('general'); // 'general' or 'security'
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
   });
+
   const [profileData, setProfileData] = useState({
     name: user?.name || '',
     email: user?.email || '',
   });
+
   const [passwordData, setPasswordData] = useState({
     current_password: '',
     password: '',
     password_confirmation: '',
   });
+
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,46 +54,60 @@ export default function Profile() {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setSelectedFile(e.target.files[0]);
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setSelectedFile(file);
+      // Create a preview URL
+      const objectUrl = URL.createObjectURL(file);
+      setPreviewUrl(objectUrl);
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setIsSubmitting(true);
     try {
       if (isLogin) {
         await login(formData.email, formData.password);
-        setSuccess('Logged in successfully!');
+        setSuccess('Welcome back!');
       } else {
         await register(formData.name, formData.email, formData.password, formData.password_confirmation);
-        setSuccess('Registered successfully!');
+        setSuccess('Account created successfully!');
       }
     } catch (err: any) {
       const errorMessage = err.response?.data?.message ||
         (err.response?.data?.errors ? Object.values(err.response.data.errors).flat().join(', ') : err.message || String(err));
       setError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleProfileUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
+    setIsSubmitting(true);
+
     const data = new FormData();
     data.append('name', profileData.name);
     data.append('email', profileData.email);
     if (selectedFile) {
       data.append('profile_picture', selectedFile);
     }
+
     try {
       await updateProfile(data);
       setSuccess('Profile updated successfully!');
       setSelectedFile(null);
+      setPreviewUrl(null);
     } catch (err: any) {
       const errorMessage = err.response?.data?.message ||
         (err.response?.data?.errors ? Object.values(err.response.data.errors).flat().join(', ') : err.message || String(err));
       setError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -88,10 +119,13 @@ export default function Profile() {
     e.preventDefault();
     setError('');
     setSuccess('');
+
     if (passwordData.password !== passwordData.password_confirmation) {
-      setError('Passwords do not match');
+      setError('New passwords do not match');
       return;
     }
+
+    setIsSubmitting(true);
     try {
       await axios.post('/api/profile/update-password', passwordData, {
         headers: {
@@ -104,263 +138,329 @@ export default function Profile() {
       const errorMessage = err.response?.data?.message ||
         (err.response?.data?.errors ? Object.values(err.response.data.errors).flat().join(', ') : err.message || String(err));
       setError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-900"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
       <Navbar />
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="relative bg-gradient-to-r from-purple-600 to-blue-600 text-white py-12"
-      >
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative max-w-4xl mx-auto text-center px-4">
-          <h1 className="text-4xl font-bold mb-2">My Profile</h1>
-          <p className="text-lg">Manage your account and personal information</p>
-        </div>
-      </motion.div>
 
-      <div className="max-w-4xl mx-auto py-8 px-4">
-        {user ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-lg shadow-xl p-8"
-          >
-            {/* Profile Picture Section */}
-            <div className="text-center mb-8">
-              <div className="relative inline-block mx-auto">
-                <img
-                  src={user.profile_picture ? `http://127.0.0.1:8000/storage/${user.profile_picture}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iI2VkZWRlZCIvPjx0ZXh0IHg9Ijc1IiB5PSI3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdGV4dC1iYXNlPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSI+VXNlciI8L3RleHQ+PC9zdmc+'}
-                  alt="Profile"
-                  className="w-32 h-32 rounded-full object-cover border-4 border-purple-200"
-                  onError={(e) => {
-                    console.log('Image failed to load:', user.profile_picture);
-                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iI2ZmNjY2NjYiLz48dGV4dCB4PSI3NSIgeT0iNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRleHQtYmFzZT0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiPkVycm9yPC90ZXh0Pjwvc3ZnPg==';
-                  }}
-                />
-                <label className="absolute -bottom-1 -right-1 bg-purple-600 text-white p-2 rounded-full cursor-pointer hover:bg-purple-700 transition-all duration-200 shadow-lg border-2 border-white flex items-center justify-center">
-                  <Pencil size={16} />
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="hidden"
-                  />
-                </label>
-              </div>
-              <h2 className="text-2xl font-bold mt-4 text-gray-800">{user.name}</h2>
-              <p className="text-base text-gray-600">{user.email}</p>
-              <p className="text-sm text-purple-600 capitalize font-medium">{user.role}</p>
-              {user.profile_picture && <p className="text-xs text-gray-500 mt-2">Profile picture: {user.profile_picture}</p>}
-            </div>
+      {/* Messages Toast-style */}
+      {(error || success) && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className={`fixed top-24 right-4 z-50 p-4 rounded-lg shadow-lg flex items-center gap-3 w-auto max-w-sm ${error ? 'bg-red-50 text-red-800 border border-red-200' : 'bg-green-50 text-green-800 border border-green-200'
+            }`}
+        >
+          {error ? <AlertCircle className="w-5 h-5 flex-shrink-0" /> : <CheckCircle className="w-5 h-5 flex-shrink-0" />}
+          <p className="font-medium text-sm">{error || success}</p>
+          <button onClick={() => { setError(''); setSuccess(''); }} className="ml-auto text-sm opacity-60 hover:opacity-100">✕</button>
+        </motion.div>
+      )}
 
-            {/* Update Profile Form */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-semibold mb-6 text-purple-900">Update Profile</h3>
-              <form onSubmit={handleProfileUpdate} className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={profileData.name}
-                    onChange={handleProfileChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={profileData.email}
-                    onChange={handleProfileChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div className="md:col-span-2 flex justify-center">
-                  <button
-                    type="submit"
-                    className="w-full md:w-auto bg-purple-900 text-white py-3 px-8 rounded-lg hover:bg-purple-950 transition-colors font-medium shadow-md border border-purple-900"
-                  >
-                    Update Profile
-                  </button>
-                </div>
-              </form>
-            </div>
+      <div className="flex-grow pt-24 pb-12 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto w-full">
+          {user ? (
+            // LOGGED IN VIEW
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+            >
+              {/* Header / Cover */}
+              <div className="h-32 bg-gradient-to-r from-purple-800 to-indigo-800 relative"></div>
 
-            {/* Update Password Form */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-semibold mb-6 text-purple-900">Change Password</h3>
-              <form onSubmit={handlePasswordUpdate} className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
-                  <input
-                    type="password"
-                    name="current_password"
-                    value={passwordData.current_password}
-                    onChange={handlePasswordChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    value={passwordData.password}
-                    onChange={handlePasswordChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div className="md:col-span-2 md:flex md:items-end md:gap-4">
-                  <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+              <div className="px-6 sm:px-8 pb-8">
+                {/* Profile Picture & Basic Info - Row */}
+                <div className="relative flex flex-col sm:flex-row items-center sm:items-end -mt-12 mb-8 gap-4 sm:gap-6 text-center sm:text-left">
+                  <div className="relative group flex-shrink-0">
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-200">
+                      <img
+                        src={
+                          previewUrl ||
+                          (user.profile_picture
+                            ? `http://127.0.0.1:8000/storage/${user.profile_picture}`
+                            : 'https://ui-avatars.com/api/?name=' + user.name + '&background=random')
+                        }
+                        alt={user.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://ui-avatars.com/api/?name=' + user.name + '&background=random';
+                        }}
+                      />
+                    </div>
+                    <label
+                      htmlFor="profile-upload"
+                      className="absolute bottom-0 right-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center cursor-pointer shadow-sm hover:bg-purple-700 transition-colors z-10"
+                      title="Change Profile Picture"
+                    >
+                      <Camera size={16} />
+                    </label>
                     <input
-                      type="password"
-                      name="password_confirmation"
-                      value={passwordData.password_confirmation}
-                      onChange={handlePasswordChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      required
+                      id="profile-upload"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      className="hidden"
                     />
                   </div>
-                  <div className="mt-4 md:mt-0 md:flex-shrink-0">
-                    <button
-                      type="submit"
-                      className="w-full md:w-auto bg-purple-900 text-white py-3 px-6 rounded-lg hover:bg-purple-950 transition-colors font-medium shadow-md border border-purple-900"
+
+                  <div className="flex-grow pt-2 sm:pb-2">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{user.name}</h1>
+                    <p className="text-gray-500">{user.email}</p>
+                  </div>
+
+                  <button
+                    onClick={logout}
+                    className="flex-shrink-0 flex items-center gap-2 px-4 py-2 border border-red-200 text-red-600 rounded-lg hover:bg-red-50 transition-colors text-sm font-medium mt-2 sm:mt-0"
+                  >
+                    <LogOut size={16} />
+                    Sign Out
+                  </button>
+                </div>
+
+                {/* Tabs */}
+                <div className="flex border-b border-gray-200 mb-8">
+                  <button
+                    onClick={() => setActiveTab('general')}
+                    className={`flex-1 pb-3 px-1 text-sm font-medium transition-colors text-center ${activeTab === 'general'
+                      ? 'text-purple-600 border-b-2 border-purple-600'
+                      : 'text-gray-500 hover:text-gray-700'
+                      }`}
+                  >
+                    Personal Information
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('security')}
+                    className={`flex-1 pb-3 px-1 text-sm font-medium transition-colors text-center ${activeTab === 'security'
+                      ? 'text-purple-600 border-b-2 border-purple-600'
+                      : 'text-gray-500 hover:text-gray-700'
+                      }`}
+                  >
+                    Security & Password
+                  </button>
+                </div>
+
+                {/* Tab Content */}
+                <div className="max-w-2xl">
+                  {activeTab === 'general' ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      Update Password
+                      {selectedFile && (
+                        <div className="mb-6 bg-blue-50 text-blue-800 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
+                          <AlertCircle size={16} />
+                          Click "Save Changes" to upload your new picture.
+                        </div>
+                      )}
+
+                      <form onSubmit={handleProfileUpdate} className="space-y-6">
+                        <div className="grid gap-6 sm:grid-cols-2">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input
+                              type="text"
+                              name="name"
+                              value={profileData.name}
+                              onChange={handleProfileChange}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input
+                              type="email"
+                              name="email"
+                              value={profileData.email}
+                              onChange={handleProfileChange}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex justify-end pt-2">
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="bg-purple-900 text-white px-6 py-2 rounded-lg hover:bg-purple-800 transition-colors shadow-sm disabled:opacity-70 text-sm font-medium"
+                          >
+                            {isSubmitting ? 'Saving...' : 'Save Changes'}
+                          </button>
+                        </div>
+                      </form>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <form onSubmit={handlePasswordUpdate} className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Current Password</label>
+                          <input
+                            type="password"
+                            name="current_password"
+                            value={passwordData.current_password}
+                            onChange={handlePasswordChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all"
+                          />
+                        </div>
+
+                        <div className="grid gap-6 sm:grid-cols-2">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                            <input
+                              type="password"
+                              name="password"
+                              value={passwordData.password}
+                              onChange={handlePasswordChange}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Confirm New Password</label>
+                            <input
+                              type="password"
+                              name="password_confirmation"
+                              value={passwordData.password_confirmation}
+                              onChange={handlePasswordChange}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex justify-end pt-2">
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="bg-purple-900 text-white px-6 py-2 rounded-lg hover:bg-purple-800 transition-colors shadow-sm disabled:opacity-70 text-sm font-medium"
+                          >
+                            {isSubmitting ? 'Updating...' : 'Update Password'}
+                          </button>
+                        </div>
+                      </form>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            // LOGGED OUT VIEW (Login/Register)
+            <div className="max-w-md mx-auto my-12">
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                <div className="p-8 text-center bg-purple-900 text-white">
+                  <h2 className="text-2xl font-bold mb-2">Welcome Back</h2>
+                  <p className="text-purple-100 text-sm">Access your account to manage your profile.</p>
+                </div>
+
+                <div className="p-8">
+                  <div className="flex gap-4 border-b border-gray-200 mb-6">
+                    <button
+                      className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${isLogin ? 'border-purple-900 text-purple-900' : 'border-transparent text-gray-400 hover:text-gray-600'}`}
+                      onClick={() => setIsLogin(true)}
+                    >
+                      Login
+                    </button>
+                    <button
+                      className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${!isLogin ? 'border-purple-900 text-purple-900' : 'border-transparent text-gray-400 hover:text-gray-600'}`}
+                      onClick={() => setIsLogin(false)}
+                    >
+                      Register
                     </button>
                   </div>
-                </div>
-              </form>
-            </div>
 
-            {/* Messages */}
-            {error && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
-              >
-                {error}
-              </motion.div>
-            )}
-            {success && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
-              >
-                {success}
-              </motion.div>
-            )}
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    {!isLogin && (
+                      <div>
+                        <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Name</label>
+                        <div className="relative">
+                          <User size={18} className="absolute left-3 top-2.5 text-gray-400" />
+                          <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+                            placeholder="John Doe"
+                          />
+                        </div>
+                      </div>
+                    )}
 
-            {/* Logout Button */}
-            <div className="text-center mt-4">
-              <button
-                onClick={logout}
-                className="bg-purple-900 text-white py-3 px-8 rounded-lg hover:bg-purple-950 transition-colors font-medium shadow-md border border-purple-900"
-              >
-                Logout
-              </button>
-            </div>
-          </motion.div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-lg shadow-lg p-8"
-          >
-            <h1 className="text-3xl font-bold text-center mb-8 text-purple-900">
-              {isLogin ? 'Login' : 'Register'}
-            </h1>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {!isLogin && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-                    required
-                  />
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Email</label>
+                      <div className="relative">
+                        <Mail size={18} className="absolute left-3 top-2.5 text-gray-400" />
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+                          placeholder="you@example.com"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Password</label>
+                      <div className="relative">
+                        <Lock size={18} className="absolute left-3 top-2.5 text-gray-400" />
+                        <input
+                          type="password"
+                          name="password"
+                          value={formData.password}
+                          onChange={handleInputChange}
+                          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    {!isLogin && (
+                      <div>
+                        <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Confirm Password</label>
+                        <div className="relative">
+                          <Lock size={18} className="absolute left-3 top-2.5 text-gray-400" />
+                          <input
+                            type="password"
+                            name="password_confirmation"
+                            value={formData.password_confirmation}
+                            onChange={handleInputChange}
+                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-purple-900 text-white py-3 rounded-lg hover:bg-purple-800 transition-colors font-medium shadow-sm mt-4"
+                    >
+                      {isSubmitting ? 'Please wait...' : (isLogin ? 'Sign In' : 'Create Account')}
+                    </button>
+                  </form>
                 </div>
-              )}
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-                  required
-                />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-                  required
-                />
-              </div>
-              {!isLogin && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Confirm Password</label>
-                  <input
-                    type="password"
-                    name="password_confirmation"
-                    value={formData.password_confirmation}
-                    onChange={handleInputChange}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-                    required
-                  />
-                </div>
-              )}
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-              {success && <p className="text-green-500 text-sm">{success}</p>}
-              <button
-                type="submit"
-                className="w-full bg-purple-900 text-white py-3 px-4 rounded-lg hover:bg-purple-950 transition-colors font-medium shadow-md"
-              >
-                {isLogin ? 'Login' : 'Register'}
-              </button>
-            </form>
-            <div className="mt-6 text-center">
-              <button
-                onClick={() => setIsLogin(!isLogin)}
-                className="text-purple-600 hover:text-purple-800"
-              >
-                {isLogin ? 'Need an account? Register' : 'Already have an account? Login'}
-              </button>
             </div>
-          </motion.div>
-        )}
+          )}
+        </div>
       </div>
+
       <Footer />
     </div>
   );

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Eye, Search, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const exampleImage = "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjBjbHViJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+const exampleImage = "/images/IR5A8777.jpg";
 
 // Customer reviews data
 const reviews = [

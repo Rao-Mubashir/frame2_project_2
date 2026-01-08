@@ -139,4 +139,28 @@ class AdminController extends Controller
             'user' => $user,
         ], 201);
     }
+    public function bookings(Request $request)
+    {
+        if ($request->user()->role !== 'admin') {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $bookings = \App\Models\Booking::with(['user', 'category', 'subCategory', 'instance'])
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(20);
+
+        return response()->json($bookings);
+    }
+
+    public function deleteBooking(Request $request, $id)
+    {
+        if ($request->user()->role !== 'admin') {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $booking = \App\Models\Booking::findOrFail($id);
+        $booking->delete();
+
+        return response()->json(['message' => 'Booking deleted successfully']);
+    }
 }

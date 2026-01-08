@@ -5,40 +5,40 @@ export function DestinationSection() {
   const cards = [
     {
       title: "Football Grounds",
-      image:
-        "https://images.unsplash.com/photo-1632300951015-42d7df909581?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGdyb3VuZCUyMHN0YWRpdW18ZW58MXx8fHwxNzY2NDM2MDMwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "/images/football/IR5A8719.jpg",
       link: "/service/football",
     },
     {
       title: "Cricket Ground",
-      image:
-        "https://images.unsplash.com/photo-1765429154824-b4a7dd58f7c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwZmllbGR8ZW58MXx8fHwxNzY2NDAzMzEyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "/images/cricket/IR5A8691.jpg",
       link: "/service/cricket",
     },
     {
       title: "Snooker",
-      image:
-        "https://images.unsplash.com/photo-1761591847985-2184afaab747?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbm9va2VyJTIwdGFibGUlMjBnYW1lfGVufDF8fHx8MTc2NjQzNjAzMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "/images/snooker/IR5A8751.jpg",
       link: "/service/snooker",
     },
     {
-      title: "Boxing",
-      image:
-        "https://images.unsplash.com/photo-1726867863287-aba3393812d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3hpbmclMjByaW5nJTIwZ3ltfGVufDF8fHx8MTc2NjQzNjAzMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      link: "/service/boxing",
+      title: "Badminton",
+      image: "/images/badminton/IR5A8722.jpg",
+      link: "/service/badminton",
+    },
+    {
+      title: "Leisure Rooms",
+      image: "/images/leisure-rooms/IR5A8742.jpg",
+      link: "/service/leisure-rooms",
     },
     {
       title: "Game Arena",
-      image:
-        "https://images.unsplash.com/photo-1553492206-f609eddc33dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1lJTIwYXJlbmElMjBlc3BvcnRzfGVufDF8fHx8MTc2NjQzNjAzMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "/images/game-arena/IR5A8696.jpg",
       link: "/service/game-arena",
     },
-    {
-      title: "Gaming Rooms",
-      image:
-        "https://images.unsplash.com/photo-1542751371-adc38448a05e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxHYW1pbmd8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      link: "/service/rooms",
-    },
+    //{
+    //  title: "Gaming Rooms",
+    //image:
+    //"https://images.unsplash.com/photo-1542751371-adc38448a05e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxHYW1pbmd8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    //link: "/service/rooms",
+    //},
     {
       title: "Swimming",
       image:

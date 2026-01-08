@@ -19,8 +19,8 @@ export function AboutBuilding({
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <motion.img 
-            src="https://images.unsplash.com/photo-1624024834874-2a1611305604?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWRtaW50b24lMjBjb3VydCUyMGluZG9vcnxlbnwxfHx8fDE3NjYzOTg5MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          <motion.img
+            src="/images/leisure-rooms/IR5A8676.jpg"
             alt="Frame 2 Complex Facilities"
             className="w-full h-full object-cover"
             initial={{ scale: 1.1 }}
@@ -30,7 +30,7 @@ export function AboutBuilding({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-900/30 to-transparent flex items-end">
             <div className="p-6 sm:p-8 md:p-12 w-full">
-              <motion.h3 
+              <motion.h3
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-3 sm:mb-4"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -39,7 +39,7 @@ export function AboutBuilding({
               >
                 {heading}
               </motion.h3>
-              <motion.p 
+              <motion.p
                 className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-2xl"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}

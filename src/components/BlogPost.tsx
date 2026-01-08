@@ -5,167 +5,137 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 const blogPosts = [
   {
     id: 1,
-    slug: "premier-sports-facilities-bradford",
-    title: "Why Frame 2 Complex is Bradford's Premier Sports Destination",
-    excerpt: "Discover what makes Frame 2 Complex the ultimate sports and recreation hub in Bradford, featuring championship-quality facilities and world-class amenities.",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjBjb21wbGV4JTIwYnJhZGZvcmR8ZW58MXx8fHwxNzY2NDM0NTUwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Facilities",
+    slug: "badminton-smash-technique",
+    title: "Mastering the Smash: Advanced Badminton Techniques",
+    excerpt: "Take your badminton game to the next level with our expert guide on perfecting your smash technique.",
+    image: "/images/badminton/IR5A8724.jpg",
+    category: "Badminton",
     date: "Dec 28, 2025",
     readTime: "6 min read",
-    author: "Frame 2 Complex Team",
+    author: "Head Coach Lee",
     content: `
-      <h2>World-Class Facilities in the Heart of Bradford</h2>
-      <p>Frame 2 Complex stands as Bradford's premier sports and recreation destination, offering an unparalleled experience for athletes, fitness enthusiasts, and sports lovers of all levels.</p>
+      <h2>The Art of the Smash</h2>
+      <p>The smash is badminton's most powerful shot, often winning points instantly. However, power isn't everything – technique is key.</p>
 
-      <h3>Championship-Quality Sports Facilities</h3>
-      <p>Our football grounds feature pristine turf surfaces that meet professional standards, while our cricket wickets provide the perfect setting for both casual matches and competitive play. The snooker tables are maintained to championship quality, and our boxing rings offer professional-grade equipment for serious training.</p>
+      <h3>Positioning and Preparation</h3>
+      <p>Get behind the shuttle early. Your body should be sideways to the net, with your non-racket arm pointing at the shuttle for balance and guidance.</p>
 
-      <h3>State-of-the-Art Gaming Arena</h3>
-      <p>Step into the future of gaming with our cutting-edge esports arena. High-performance gaming stations, competitive tournaments, and a vibrant community await in our state-of-the-art facility equipped with ultra-fast internet and professional-grade equipment.</p>
-
-      <h3>Premium Amenities</h3>
-      <p>From luxurious changing rooms with powerful hairdryers and straighteners to our spa facilities and comfortable accommodation rooms, every detail is designed to enhance your experience.</p>
-
-      <h3>Expert Coaching and Community</h3>
-      <p>Our team of expert coaches and staff are dedicated to helping you achieve your goals, whether you're training for competition or simply enjoying recreational sports. Join our vibrant community and be part of Bradford's sports revolution.</p>
+      <h3>The Strike</h3>
+      <p>Explode upwards, rotating your hips and shoulders. Snap your wrist at the point of impact to generate maximum speed. Aim steeply downwards.</p>
+      
+      <h3>Recovery</h3>
+      <p>Follow through and immediately return to your base position, ready for the next shot.</p>
     `
   },
   {
     id: 2,
-    slug: "fitness-journey-success-stories",
-    title: "Real Success Stories: Member Fitness Journeys at Frame 2 Complex",
-    excerpt: "Inspiring stories from our members who transformed their lives through our comprehensive fitness programs, expert coaching, and supportive community.",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwc3VjY2VzcyUyMHN0b3JpZXN8ZW58MXx8fHwxNzY2NDM0NTUwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Success Stories",
+    slug: "snooker-cue-action",
+    title: "Precision Play: Improving Your Snooker Cue Action",
+    excerpt: "Learn the fundamentals of a solid cue action to improve your consistency and potting success rate.",
+    image: "/images/snooker/IR5A8646.jpg",
+    category: "Snooker",
     date: "Dec 25, 2025",
     readTime: "8 min read",
-    author: "Sarah Mitchell",
+    author: "Pro Player Mark",
     content: `
-      <h2>Transforming Lives Through Sports and Fitness</h2>
-      <p>At Frame 2 Complex, we're not just about facilities – we're about transformation. Here are inspiring stories from members who achieved their fitness goals with our support.</p>
+      <h2>The Foundation of Snooker</h2>
+      <p>A consistent cue action is the bedrock of any good snooker player's game. It ensures that you strike the cue ball exactly where you intend.</p>
 
-      <h3>Sarah's Boxing Journey</h3>
-      <p>Sarah joined us six months ago looking to build confidence and get fit. Under the guidance of our expert boxing coaches, she not only transformed her physique but discovered a passion for the sport. "Frame 2 Complex gave me the tools and confidence to pursue my dreams," she says.</p>
+      <h3>The Stance</h3>
+      <p>Your stance should be stable and comfortable. Keep your chin close to the cue and ensure your bridge arm is straight.</p>
 
-      <h3>Michael's Football Comeback</h3>
-      <p>After years away from sports, Michael returned to football at our championship-quality grounds. Our coaching staff helped him rebuild his skills and confidence. Today, he captains a local team and credits Frame 2 Complex with giving him his love for the game back.</p>
+      <h3>The Grip</h3>
+      <p>Visualise holding a bird – firm enough so it doesn't fly away, but loose enough not to crush it. A relaxed grip allows for a smoother delivery.</p>
 
-      <h3>Emma's Wellness Transformation</h3>
-      <p>Emma's journey began with our yoga classes and expanded to include swimming in our outdoor heated pool and strength training in our fully equipped gym. "The supportive community and expert guidance made all the difference," she shares.</p>
-
-      <h3>Community Support</h3>
-      <p>What makes these success stories possible is our commitment to each member. From personalized training programs to nutritional guidance and mental wellness support, we provide comprehensive care for your fitness journey.</p>
+      <h3>Follow Through</h3>
+      <p>Don't stop the cue when you hit the white. drive the cue through the ball for better control and power.</p>
     `
   },
   {
     id: 3,
-    slug: "sports-nutrition-guide",
-    title: "The Ultimate Guide to Sports Nutrition for Peak Performance",
-    excerpt: "Learn how proper nutrition can enhance your athletic performance, whether you're training for competition or maintaining an active lifestyle.",
-    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjBudXRyaXRpb258ZW58MXx8fHwxNzY2NDM0NTUwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Nutrition",
+    slug: "football-fitness",
+    title: "Match Fit: Building Endurance for 90 Minutes",
+    excerpt: "Essential fitness tips and drills to keep you performing at your peak from kickoff to the final whistle.",
+    image: "/images/football/IR5A8719.jpg",
+    category: "Football",
     date: "Dec 20, 2025",
     readTime: "7 min read",
-    author: "Dr. James Wilson",
+    author: "Fitness Trainer Sarah",
     content: `
-      <h2>Fueling Your Body for Optimal Performance</h2>
-      <p>Proper nutrition is the foundation of athletic success. Whether you're a competitive athlete or enjoy recreational sports, understanding sports nutrition can significantly enhance your performance and recovery.</p>
+      <h2>Endurance is Key</h2>
+      <p>Modern football requires high-intensity running combined with technical skill. Fitness is just as important as ball control.</p>
 
-      <h3>Pre-Workout Fuel</h3>
-      <p>Consume a balanced meal 2-3 hours before exercise containing complex carbohydrates, lean protein, and healthy fats. For shorter sessions, a small snack with carbs and protein 30-60 minutes before can provide the energy boost you need.</p>
+      <h3>Interval Training</h3>
+      <p>High-Intensity Interval Training (HIIT) mimics the stop-start nature of a football match. Mix sprints with jogging recovery periods.</p>
 
-      <h3>During Exercise</h3>
-      <p>For sessions longer than 90 minutes, consider sports drinks or gels to maintain energy levels. Stay hydrated throughout your workout, and consider electrolyte replacement for intense or long-duration activities.</p>
+      <h3>Core Strength</h3>
+      <p>A strong core improves balance and stability, making you harder to knock off the ball.</p>
 
-      <h3>Post-Workout Recovery</h3>
-      <p>The 30-60 minutes after exercise is your "anabolic window" – the optimal time to consume protein and carbohydrates to aid muscle recovery and replenish glycogen stores. Aim for a 3:1 or 4:1 ratio of carbs to protein.</p>
-
-      <h3>Hydration Strategies</h3>
-      <p>Proper hydration is crucial for performance. Drink water throughout the day and during exercise. For intense workouts, consider electrolyte supplements to replace what you lose through sweat.</p>
-
-      <h3>Individualized Nutrition</h3>
-      <p>Remember that nutrition needs vary based on your sport, intensity, duration, and individual metabolism. Our nutrition experts can help create a personalized plan tailored to your goals and activities.</p>
+      <h3>Nutrition and Hydration</h3>
+      <p>Fuel your body with the right carbohydrates before a match and stay hydrated to maintain concentration levels.</p>
     `
   },
   {
     id: 4,
-    slug: "esports-gaming-revolution",
-    title: "The Esports Revolution: Gaming as a Professional Sport",
-    excerpt: "Explore how gaming has evolved into a professional sport and how Frame 2 Complex supports the next generation of esports athletes.",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlc3BvcnRzJTIwZ2FtaW5nfGVufDF8fHx8MTc2NjQzNDU1MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Esports",
+    slug: "cricket-mental-game",
+    title: "The Mental Game: Concentration in Cricket",
+    excerpt: "Cricket is a game of patience and focus. Learn how to maintain concentration for long innings.",
+    image: "/images/cricket/IR5A8754.jpg",
+    category: "Cricket",
     date: "Dec 15, 2025",
     readTime: "9 min read",
-    author: "Alex Chen",
+    author: "Sports Psychologist Dr. Khan",
     content: `
-      <h2>Gaming: The New Frontier of Professional Sports</h2>
-      <p>Esports has emerged as a global phenomenon, with professional gamers competing for millions in prize money and millions of fans worldwide. At Frame 2 Complex, we're proud to support this exciting evolution of sports entertainment.</p>
+      <h2>The Batting Mindset</h2>
+      <p>Batting is about playing one ball at a time. Switch on when the bowler runs in, and switch off between deliveries to conserve mental energy.</p>
 
-      <h3>The Rise of Competitive Gaming</h3>
-      <p>What started as casual gaming in basements has become a billion-dollar industry. Games like League of Legends, Dota 2, and Counter-Strike feature professional teams, dedicated training facilities, and global tournaments that rival traditional sports events.</p>
+      <h3>Handling Pressure</h3>
+      <p>Focus on your routine. Breathe deeply and visualize your success. Trust your training.</p>
 
-      <h3>Professional Gaming Facilities</h3>
-      <p>Our esports arena features high-performance gaming stations with top-tier equipment, ultra-fast internet connections, and professional-grade peripherals. Whether you're training for competition or enjoying casual gaming, our facilities provide the perfect environment.</p>
-
-      <h3>Community and Competition</h3>
-      <p>Join our vibrant gaming community for tournaments, leagues, and social events. We host regular competitions and provide coaching for aspiring professional gamers. Our facilities also serve as a hub for gaming education and skill development.</p>
-
-      <h3>The Future of Esports</h3>
-      <p>As esports continues to grow, Frame 2 Complex remains committed to supporting the next generation of gaming athletes. We provide the training grounds, community, and resources needed to turn gaming passion into professional success.</p>
+      <h3>Staying in the Present</h3>
+      <p>Don't worry about the previous ball or the outcome of the match. Focus entirely on the next delivery.</p>
     `
   },
   {
     id: 5,
-    slug: "mental-wellness-athletes",
-    title: "Mental Wellness: The Hidden Key to Athletic Success",
-    excerpt: "Discover how mental training and wellness practices can enhance athletic performance and help you achieve your goals at Frame 2 Complex.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfG1lbnRhbCUyMHdlbGxuZXNzJTIwYXRobGV0ZXxlbnwxfHx8fDE3NjY0MzQ1NTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Wellness",
+    slug: "swimming-recovery",
+    title: "Active Recovery: Why Swimmers Recover Faster",
+    excerpt: "Discover the benefits of swimming for active recovery and how it can help athletes of all sports.",
+    image: "/images/swimming/IMG_2355.jpg",
+    category: "Swimming",
     date: "Dec 10, 2025",
     readTime: "6 min read",
-    author: "Dr. Lisa Thompson",
+    author: "Physio Tom",
     content: `
-      <h2>The Mind-Body Connection in Sports</h2>
-      <p>Athletic performance isn't just about physical strength and technique – mental wellness plays a crucial role in achieving peak performance and maintaining long-term success.</p>
+      <h2>Low Impact, High Reward</h2>
+      <p>Swimming provides a full-body workout without the impact stress on joints associated with running or contact sports.</p>
 
-      <h3>Mindfulness and Focus</h3>
-      <p>Our yoga and meditation classes help athletes develop mental clarity, focus, and stress management skills. These practices translate directly to improved performance in all sports, from precision in snooker to strategy in team sports.</p>
+      <h3>Circulation Boost</h3>
+      <p> The water pressure and horizontal position help improve blood flow, flushing out toxins from tired muscles.</p>
 
-      <h3>Building Mental Resilience</h3>
-      <p>Through coaching and wellness programs, we help athletes develop the mental toughness needed to overcome challenges, handle pressure, and maintain motivation. Mental training is as important as physical training for serious athletes.</p>
-
-      <h3>Recovery and Rest</h3>
-      <p>Proper recovery includes mental rest as well as physical recovery. Our spa facilities and relaxation areas provide spaces for mental rejuvenation, helping you return to training refreshed and focused.</p>
-
-      <h3>Holistic Athlete Development</h3>
-      <p>At Frame 2 Complex, we believe in developing the whole athlete – body, mind, and spirit. Our comprehensive wellness programs support mental health and provide tools for long-term athletic success.</p>
+      <h3>Flexibility</h3>
+      <p>Moving through a full range of motion in the water helps maintain and improve flexibility.</p>
     `
   },
   {
     id: 6,
-    slug: "youth-sports-development",
-    title: "Investing in the Future: Youth Sports Development at Frame 2 Complex",
-    excerpt: "How we're nurturing the next generation of athletes through comprehensive youth programs, coaching, and community engagement.",
-    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3V0aCUyMHNwb3J0cyUyMHRyYWluaW5nfGVufDF8fHx8MTc2NjQzNDU1MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Youth",
+    slug: "leisure-relaxation",
+    title: "Unwind and Recharge: The Importance of Leisure",
+    excerpt: "Taking time to relax is crucial for mental wellness. Explore our leisure rooms for the perfect escape.",
+    image: "/images/leisure-rooms/IR5A8648.jpg",
+    category: "Leisure",
     date: "Dec 5, 2025",
     readTime: "7 min read",
-    author: "Coach David Patel",
+    author: "Wellness Coach Emily",
     content: `
-      <h2>Building Tomorrow's Champions Today</h2>
-      <p>At Frame 2 Complex, we're committed to developing young athletes and fostering a love for sports that will last a lifetime. Our youth programs combine fun, skill development, and character building.</p>
+      <h2>The Power of Downtime</h2>
+      <p>Constant stress can lead to burnout. Taking time for leisure activities is essential for mental health.</p>
 
-      <h3>Comprehensive Youth Programs</h3>
-      <p>From grassroots football and cricket coaching to introduction to boxing and gaming, our youth programs cater to all interests and skill levels. We believe every child deserves the opportunity to discover their athletic potential.</p>
+      <h3>Social Connection</h3>
+      <p>Our leisure rooms provide a space to connect with friends and family, strengthening social bonds.</p>
 
-      <h3>Expert Coaching and Development</h3>
-      <p>Our qualified coaches specialize in youth development, using age-appropriate training methods that build skills, confidence, and a love for sports. We focus on fundamental movement skills, sportsmanship, and personal growth.</p>
-
-      <h3>Safe and Supportive Environment</h3>
-      <p>All our youth programs prioritize safety, inclusivity, and fun. Our facilities are designed with young athletes in mind, and our staff are trained in child protection and development principles.</p>
-
-      <h3>Community Impact</h3>
-      <p>By investing in youth sports development, we're not just creating better athletes – we're building stronger communities. Our programs teach valuable life skills like teamwork, discipline, and perseverance that benefit young people both on and off the field.</p>
+      <h3>Mental Refresh</h3>
+      <p>Engaging in a relaxing activity helps clear the mind and reduces stress levels, leaving you refreshed and energized.</p>
     `
   }
 ];

@@ -1,4 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
+import axios from 'axios';
 import {
   Mail,
   Phone,
@@ -66,9 +67,30 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
     string | null
   >(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setStatus('submitting');
+
+    try {
+      await axios.post('http://localhost:8000/api/contact/query', formData);
+      setStatus('success');
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        club: "",
+        subject: "",
+        message: "",
+      });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error('Failed to submit query:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   const handleChange = (
@@ -83,7 +105,7 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#F5F1E8] via-white to-[#F5F1E8] py-32 px-8 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#F5F1E8] via-white to-[#F5F1E8] py-16 md:py-32 px-4 md:px-8 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -209,7 +231,7 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
             }}
           >
             {/* Glassmorphism Card */}
-            <div className="relative bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-10 md:p-14 shadow-2xl border border-white/50 overflow-hidden">
+            <div className="relative bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-6 md:p-14 shadow-2xl border border-white/50 overflow-hidden">
               {/* Animated gradient background */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-purple-900/5 via-transparent to-purple-900/5 opacity-50"
@@ -442,9 +464,10 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
 
                   <motion.button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-purple-900 to-purple-950 text-white py-5 rounded-2xl font-medium relative overflow-hidden group shadow-xl"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    disabled={status === 'submitting'}
+                    className="w-full bg-gradient-to-r from-purple-900 to-purple-950 text-white py-5 rounded-2xl font-medium relative overflow-hidden group shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
+                    whileHover={{ scale: status === 'submitting' ? 1 : 1.02 }}
+                    whileTap={{ scale: status === 'submitting' ? 1 : 0.98 }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -457,10 +480,20 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
                       transition={{ duration: 0.5 }}
                     />
                     <span className="relative flex items-center justify-center gap-2">
-                      Send Message
+                      {status === 'submitting' ? 'Sending...' : 'Send Message'}
                       <Send className="w-5 h-5" />
                     </span>
                   </motion.button>
+                  {status === 'success' && (
+                    <div className="p-4 bg-green-100 text-green-700 rounded-xl text-center">
+                      Message sent successfully! We'll get back to you soon.
+                    </div>
+                  )}
+                  {status === 'error' && (
+                    <div className="p-4 bg-red-100 text-red-700 rounded-xl text-center">
+                      Failed to send message. Please try again later.
+                    </div>
+                  )}
                 </form>
               </div>
             </div>

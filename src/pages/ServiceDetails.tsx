@@ -32,13 +32,11 @@ const servicesData: Record<string, ServiceData> = {
     id: "football",
     category: "SPORTS",
     title: "Football Grounds",
-    heroImage:
-      "https://images.unsplash.com/photo-1600130202712-fd01014ffa79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGZpZWxkJTIwc3RhZGl1bXxlbnwxfHx8fDE3NjY0MjMzMjh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    heroImage: "/images/football/IR5A8719.jpg",
     subtitle: "Championship-quality football facilities",
     description:
       "Play on pristine football grounds designed for both competitive matches and recreational games. Our championship-quality pitches provide the perfect setting for the beautiful game, whether you're training for competition or enjoying a casual match with friends.",
-    sideImage:
-      "https://images.unsplash.com/photo-1759338780815-8dbc17f7ddf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHRyYWluaW5nJTIwc2Vzc2lvbnxlbnwxfHx8fDE3NjY0Mzc0OTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    sideImage: "/images/football/IR5A8717.jpg",
     featuresTitle: "Experience premier football facilities",
     featuresDescription:
       "From casual kickabouts to serious training sessions, our football grounds offer everything you need for the perfect match.",
@@ -69,13 +67,11 @@ const servicesData: Record<string, ServiceData> = {
     id: "cricket",
     category: "SPORTS",
     title: "Cricket Ground",
-    heroImage:
-      "https://images.unsplash.com/photo-1593766787879-e8c78e09cbbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGl0Y2glMjBwbGF5ZXJ8ZW58MXx8fHwxNzY2NDM3NDk0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    heroImage: "/images/cricket/IR5A8691.jpg",
     subtitle: "Professional cricket facilities",
     description:
       "Experience cricket at its finest on our professional-grade turf wickets. From club matches to coaching sessions, our grounds offer everything you need for the gentleman's game with top-quality pitches, nets, and all the amenities you need.",
-    sideImage:
-      "https://images.unsplash.com/photo-1730739628091-133de587ad14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc3RhZGl1bSUyMG1hdGNofGVufDF8fHx8MTc2NjQxMjQ0NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    sideImage: "/images/cricket/IR5A8692.jpg",
     featuresTitle: "Master the gentleman's game",
     featuresDescription:
       "Join leagues, participate in tournaments, and develop your skills with expert coaching at our world-class cricket facilities.",
@@ -106,13 +102,11 @@ const servicesData: Record<string, ServiceData> = {
     id: "snooker",
     category: "LEISURE",
     title: "Snooker",
-    heroImage:
-      "https://images.unsplash.com/photo-1677256260549-13f36774d59e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbm9va2VyJTIwdGFibGUlMjBsdXh0dXJ8ZW58MXx8fHwxNzY2NDM3NDk0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    heroImage: "/images/snooker/IR5A8646.jpg",
     subtitle: "Championship-standard snooker tables",
     description:
       "Perfect your game on our championship-standard snooker tables. Whether you're a seasoned player or just starting out, enjoy the precision and elegance of this classic sport in our refined and sophisticated environment.",
-    sideImage:
-      "https://images.unsplash.com/photo-1731485485320-5a39c76decfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbm9va2VyJTIwcGxheWVyJTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc2NjM4ODMyNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    sideImage: "/images/snooker/IR5A8649.jpg",
     featuresTitle: "Precision and elegance",
     featuresDescription:
       "Enjoy world-class snooker facilities in a premium environment designed for serious players and casual enthusiasts alike.",
@@ -139,6 +133,77 @@ const servicesData: Record<string, ServiceData> = {
       },
     ],
   },
+  badminton: {
+    id: "badminton",
+    category: "SPORTS",
+    title: "Badminton Courts",
+    heroImage: "/images/badminton/IR5A8722.jpg",
+    subtitle: "Professional-grade badminton courts",
+    description:
+      "Experience badminton at its finest on our professional-grade courts. Perfect for competitive matches, training sessions, or recreational play with friends and family in a premium indoor facility.",
+    sideImage: "/images/badminton/IR5A8723.jpg",
+    featuresTitle: "Play at your best",
+    featuresDescription:
+      "Our badminton facilities offer everything you need for competitive play or casual enjoyment with top-quality courts and amenities.",
+    features: [
+      {
+        title: "Professional courts",
+        description:
+          "Play on regulation-size courts with proper flooring, net height, and court markings. Perfect surface for fast-paced rallies and competitive matches.",
+      },
+      {
+        title: "Climate controlled",
+        description:
+          "Enjoy comfortable playing conditions year-round with our climate-controlled indoor facility. No weather interruptions, just pure badminton.",
+      },
+      {
+        title: "Equipment available",
+        description:
+          "Rackets and shuttlecocks available for rent. We provide quality equipment so you can focus on your game.",
+      },
+      {
+        title: "Coaching programs",
+        description:
+          "Improve your skills with professional coaching available for all ages and skill levels. From beginners to advanced players.",
+      },
+    ],
+  },
+  "leisure-rooms": {
+    id: "leisure-rooms",
+    category: "LEISURE",
+    title: "Leisure Rooms",
+    heroImage: "/images/leisure-rooms/IR5A8676.jpg",
+    subtitle: "Premium VIP leisure experience",
+    description:
+      "Relax and unwind in our premium VIP leisure rooms. Perfect for private gatherings, celebrations, or simply enjoying quality time with friends in a luxurious setting with top-tier amenities.",
+    sideImage: "/images/leisure-rooms/IR5A8648.jpg",
+    featuresTitle: "Luxury and comfort",
+    featuresDescription:
+      "Our VIP leisure rooms combine elegance with entertainment, offering the perfect space for memorable experiences.",
+    features: [
+      {
+        title: "VIP amenities",
+        description:
+          "Enjoy premium furnishings, ambient lighting, and comfortable seating in our elegantly designed VIP rooms. Every detail crafted for your comfort.",
+      },
+      {
+        title: "Private spaces",
+        description:
+          "Book exclusive private rooms for your group. Perfect for celebrations, business meetings, or intimate gatherings with complete privacy.",
+      },
+      {
+        title: "Entertainment options",
+        description:
+          "Each room equipped with entertainment systems, gaming consoles, and premium audio-visual equipment for your enjoyment.",
+      },
+      {
+        title: "Catering services",
+        description:
+          "Complement your experience with our catering services. Food and beverage options available to make your visit complete.",
+      },
+    ],
+  },
+  /* BOXING FACILITY REMOVED AS REQUESTED
   boxing: {
     id: "boxing",
     category: "FITNESS",
@@ -176,17 +241,16 @@ const servicesData: Record<string, ServiceData> = {
       },
     ],
   },
+  */
   "game-arena": {
     id: "game-arena",
     category: "ENTERTAINMENT",
     title: "Game Arena",
-    heroImage:
-      "https://images.unsplash.com/photo-1553492206-f609eddc33dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmclMjBhcmVuYSUyMGVzcG9ydHN8ZW58MXx8fHwxNzY2NDM3NDk1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    heroImage: "/images/game-arena/IR5A8696.jpg",
     subtitle: "Cutting-edge esports facility",
     description:
       "Step into the future of gaming with our cutting-edge esports arena. High-performance gaming stations, competitive tournaments, and a vibrant community await in our state-of-the-art facility designed for serious gamers and esports enthusiasts.",
-    sideImage:
-      "https://images.unsplash.com/photo-1624357676666-4cca3b657627?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmclMjByb29tJTIwY29tcHV0ZXJzfGVufDF8fHx8MTc2NjQzNjIxM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    sideImage: "/images/game-arena/IR5A8698.jpg",
     featuresTitle: "Compete at the highest level",
     featuresDescription:
       "Join leagues, compete in tournaments, and connect with fellow gamers in our professional esports environment.",
@@ -303,67 +367,95 @@ export default function ServiceDetails() {
   const facilityImages =
     serviceId === "football"
       ? [
-          "https://images.unsplash.com/photo-1759722144262-c084e801c8b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHN0YWRpdW0lMjBmYWNpbGl0aWVzfGVufDF8fHx8MTc2NjQzODQ5NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-          "https://images.unsplash.com/photo-1752673508944-2578f0d62ce1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHRyYWluaW5nJTIwZ3JvdW5kfGVufDF8fHx8MTc2NjMzMDA0Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-          "https://images.unsplash.com/photo-1669598370772-8e14636c49d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGxvY2tlciUyMHJvb218ZW58MXx8fHwxNzY2NDM4NDk2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-          "https://images.unsplash.com/photo-1651043421470-88b023bb9636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHBpdGNoJTIwYWVyaWFsfGVufDF8fHx8MTc2NjQzODQ5Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-        ]
+        "/images/football/IR5A8717.jpg",
+        "/images/football/IR5A8718.jpg",
+        "/images/football/IR5A8719.jpg",
+      ]
       : serviceId === "cricket"
         ? [
-            "https://images.unsplash.com/photo-1687709644584-61d98a60dcb5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc3RhZGl1bSUyMGZhY2lsaXRpZXN8ZW58MXx8fHwxNzY2NDM5NDQwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-            "https://images.unsplash.com/photo-1582617578126-4bdcead11e80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcHJhY3RpY2UlMjBuZXRzfGVufDF8fHx8MTc2NjQzOTQ0MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-            "https://images.unsplash.com/photo-1625401586082-9a9b17bc4ce5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBncm91bmR8ZW58MXx8fHwxNzY2NDM5NDQxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-            "https://images.unsplash.com/photo-1709134800935-d00e89d5b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdHJhaW5pbmclMjBzZXNzaW9ufGVufDF8fHx8MTc2NjQzOTQ0MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-          ]
+          "/images/cricket/IR5A8691.jpg",
+          "/images/cricket/IR5A8692.jpg",
+          "/images/cricket/IR5A8693.jpg",
+          "/images/cricket/IR5A8694.jpg",
+          "/images/cricket/IR5A8695.jpg",
+        ]
         : serviceId === "snooker"
           ? [
-              "https://images.unsplash.com/photo-1655338719641-d52e10211af4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbm9va2VyJTIwaGFsbCUyMHRhYmxlfGVufDF8fHx8MTc2NjQzOTk3MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              "https://images.unsplash.com/photo-1649354418121-61a71834fa66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbm9va2VyJTIwY2x1YiUyMGludGVyaW9yfGVufDF8fHx8MTc2NjQzOTk3MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              "https://images.unsplash.com/photo-1731485485320-5a39c76decfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbm9va2VyJTIwcGxheWVyJTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc2NjM4ODMyNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              "https://images.unsplash.com/photo-1696454593555-6c5c1f3b8dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWxsaWFyZHMlMjBsb3VuZ2UlMjBsdXh1cnl8ZW58MXx8fHwxNzY2NDM5OTcxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-            ]
-          : serviceId === "boxing"
+            "/images/snooker/IR5A8646.jpg",
+            "/images/snooker/IR5A8649.jpg",
+            "/images/snooker/IR5A8650.jpg",
+            "/images/snooker/IR5A8651.jpg",
+            "/images/snooker/IR5A8652.jpg",
+            "/images/snooker/IR5A8653.jpg",
+            "/images/snooker/IR5A8654.jpg",
+            "/images/snooker/IR5A8659.jpg",
+            "/images/snooker/IR5A8660.jpg",
+            "/images/snooker/IR5A8661.jpg",
+            "/images/snooker/IR5A8677.jpg",
+            "/images/snooker/IR5A8678.jpg",
+            "/images/snooker/IR5A8679.jpg",
+            "/images/snooker/IR5A8680.jpg",
+            "/images/snooker/IR5A8685.jpg",
+            "/images/snooker/IR5A8686.jpg",
+            "/images/snooker/IR5A8729.jpg",
+            "/images/snooker/IR5A8720.jpg",
+            "/images/snooker/IR5A8731.jpg",
+            "/images/snooker/IR5A8732.jpg",
+            "/images/snooker/IR5A8733.jpg",
+            "/images/snooker/IR5A8737.jpg",
+            "/images/snooker/IR5A8738.jpg",
+            "/images/snooker/IR5A8744.jpg",
+          ]
+          : serviceId === "badminton"
             ? [
-                "https://images.unsplash.com/photo-1726867863287-aba3393812d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3hpbmclMjBneW0lMjByaW5nfGVufDF8fHx8MTc2NjQzNzQ5NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                "https://images.unsplash.com/photo-1764756510644-5a8bac009c91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3hpbmclMjB0cmFpbmluZyUyMGZhY2lsaXR5fGVufDF8fHx8MTc2NjQ0MDQ3NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                "https://images.unsplash.com/photo-1716306886418-f84f6d4c2f3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3hpbmclMjBlcXVpcG1lbnQlMjBwdW5jaGluZ3xlbnwxfHx8fDE3NjY0NDA0NzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                "https://images.unsplash.com/photo-1590070714379-e894212d7838?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3hpbmclMjBjb2FjaCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NjQ0MDQ3NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              ]
-            : serviceId === "game-arena"
+              "/images/badminton/IR5A8722.jpg",
+              "/images/badminton/IR5A8723.jpg",
+              "/images/badminton/IR5A8724.jpg",
+            ]
+            : serviceId === "leisure-rooms"
               ? [
-                  "https://images.unsplash.com/photo-1759701547036-bf7d7b05cc52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlc3BvcnRzJTIwZ2FtaW5nJTIwc2V0dXB8ZW58MXx8fHwxNzY2Mzk4NDg5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                  "https://images.unsplash.com/photo-1632017734927-48988a0efae7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmclMjBhcmVuYSUyMGNvbXB1dGVyc3xlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                  "https://images.unsplash.com/photo-1632376371614-79d80280822f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlc3BvcnRzJTIwdG91cm5hbWVudCUyMHZlbnVlfGVufDF8fHx8MTc2NjQ0MDQ3Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                  "https://images.unsplash.com/photo-1632854285205-8e31478219db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmclMjBsb3VuZ2UlMjBzZXR1cHxlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                "/images/leisure-rooms/IR5A8648.jpg",
+                "/images/leisure-rooms/IR5A8656.jpg",
+                "/images/leisure-rooms/IR5A8664.jpg",
+                "/images/leisure-rooms/IR5A8676.jpg",
+                "/images/leisure-rooms/IR5A8681.jpg",
+              ]
+              : serviceId === "game-arena"
+                ? [
+                  "/images/game-arena/IR5A8696.jpg",
+                  "/images/game-arena/IR5A8697.jpg",
+                  "/images/game-arena/IR5A8698.jpg",
+                  "/images/game-arena/IR5A8699.jpg",
+                  "/images/game-arena/IR5A8700.jpg",
+                  "/images/game-arena/IR5A8701.jpg",
+                  "/images/game-arena/IR5A8703.jpg",
+                  "/images/game-arena/IR5A8704.jpg",
+                  "/images/game-arena/IR5A8706.jpg",
+                  "/images/game-arena/IR5A8707.jpg",
+                  "/images/game-arena/IR5A8708.jpg",
+                  "/images/game-arena/IR5A8710.jpg",
+                  "/images/game-arena/IR5A8711.jpg",
+                  "/images/game-arena/IR5A8712.jpg",
+                  "/images/game-arena/IR5A8713.jpg",
+                  "/images/game-arena/IR5A8714.jpg",
                 ]
-              : serviceId === "rooms"
-                ? [
-                    "https://images.unsplash.com/photo-1593305841991-05c297ba4575?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmdpcm9vbSUyMHNldHVwfGVufDF8fHx8MTc2NjQ0MDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                    "https://images.unsplash.com/photo-1542751371-adc38448a05e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmdpcm9vbSUyMGNvbXB1dGVyc3xlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                    "https://images.unsplash.com/photo-1511512578047-dfb367046420?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlc3BvcnRzJTIwZ2FtaW5nJTIwcm9vbXxlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                    "https://images.unsplash.com/photo-1632854285205-8e31478219db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1pbmdpcm9vbSUyMGxvdW5nZXxlbnwxfHx8fDE3NjY0NDA0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                  ]
                 : serviceId === "swimming"
-                ? [
+                  ? [
                     "https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWluZyUyMGxlc3NvbnMlMjBjb2FjaGluZ3xlbnwxfHx8fDE3NjY0MzYyMTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
                     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXRlciUyMGFyZWF8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
                     "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWVyJTIwc3dpbW1pbmd8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
                     "https://images.unsplash.com/photo-1530549387789-4c1017266635?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2ltbWluZyUyMHBvb2wlMjBsdXh1cnklMjBpbmRvb3J8ZW58MXx8fHwxNzY2NDM2MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
                   ]
-                : [];
+                  : [];
 
   const prevSlide = () => {
     setCurrentSlide(
-      (prev) =>
-        (prev - 1 + facilityImages.length) %
-        facilityImages.length,
+      (prev) => (prev - 1 + facilityImages.length) % facilityImages.length
     );
   };
 
   const nextSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev + 1) % facilityImages.length,
-    );
+    setCurrentSlide((prev) => (prev + 1) % facilityImages.length);
   };
 
   if (!service) {
@@ -463,12 +555,12 @@ export default function ServiceDetails() {
 
             {/* Title - Enhanced for All Services */}
             {serviceId === "football" ||
-            serviceId === "cricket" ||
-            serviceId === "snooker" ||
-            serviceId === "boxing" ||
-            serviceId === "game-arena" ||
-            serviceId === "swimming" ||
-            serviceId === "rooms" ? (
+              serviceId === "cricket" ||
+              serviceId === "snooker" ||
+              serviceId === "boxing" ||
+              serviceId === "game-arena" ||
+              serviceId === "swimming" ||
+              serviceId === "rooms" ? (
               <div className="relative">
                 {/* Background glow effect */}
                 <motion.div
@@ -898,11 +990,10 @@ export default function ServiceDetails() {
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       whileHover={{ scale: 1.2 }}
-                      className={`h-2 rounded-full transition-all ${
-                        currentSlide === index
-                          ? "w-12 bg-purple-900"
-                          : "w-2 bg-gray-400 hover:bg-gray-600"
-                      }`}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
                     />
                   ))}
                 </div>
@@ -1042,11 +1133,10 @@ export default function ServiceDetails() {
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       whileHover={{ scale: 1.2 }}
-                      className={`h-2 rounded-full transition-all ${
-                        currentSlide === index
-                          ? "w-12 bg-purple-900"
-                          : "w-2 bg-gray-400 hover:bg-gray-600"
-                      }`}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
                     />
                   ))}
                 </div>
@@ -1839,11 +1929,10 @@ export default function ServiceDetails() {
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       whileHover={{ scale: 1.2 }}
-                      className={`h-2 rounded-full transition-all ${
-                        currentSlide === index
-                          ? "w-12 bg-purple-900"
-                          : "w-2 bg-gray-400 hover:bg-gray-600"
-                      }`}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
                     />
                   ))}
                 </div>
@@ -2318,11 +2407,10 @@ export default function ServiceDetails() {
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       whileHover={{ scale: 1.2 }}
-                      className={`h-2 rounded-full transition-all ${
-                        currentSlide === index
-                          ? "w-12 bg-purple-900"
-                          : "w-2 bg-gray-400 hover:bg-gray-600"
-                      }`}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
                     />
                   ))}
                 </div>
@@ -2794,11 +2882,10 @@ export default function ServiceDetails() {
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       whileHover={{ scale: 1.2 }}
-                      className={`h-2 rounded-full transition-all ${
-                        currentSlide === index
-                          ? "w-12 bg-purple-900"
-                          : "w-2 bg-gray-400 hover:bg-gray-600"
-                      }`}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
                     />
                   ))}
                 </div>
@@ -3268,11 +3355,10 @@ export default function ServiceDetails() {
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       whileHover={{ scale: 1.2 }}
-                      className={`h-2 rounded-full transition-all ${
-                        currentSlide === index
-                          ? "w-12 bg-purple-900"
-                          : "w-2 bg-gray-400 hover:bg-gray-600"
-                      }`}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
                     />
                   ))}
                 </div>
@@ -3736,11 +3822,10 @@ export default function ServiceDetails() {
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       whileHover={{ scale: 1.2 }}
-                      className={`h-2 rounded-full transition-all ${
-                        currentSlide === index
-                          ? "w-12 bg-purple-900"
-                          : "w-2 bg-gray-400 hover:bg-gray-600"
-                      }`}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
                     />
                   ))}
                 </div>
@@ -4078,6 +4163,884 @@ export default function ServiceDetails() {
                 </div>
               </motion.div>
 
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Come and Experience Section - Only for Badminton */}
+      {serviceId === "badminton" && (
+        <>
+          <section className="bg-white py-20 mb-8">
+            <div className="max-w-[1000px] mx-auto px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <h2 className="text-purple-900 mb-12">
+                  Come and experience it for yourself
+                </h2>
+
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Ready to step onto the court? Experience the speed and precision of badminton on our professional-grade courts. Book your session today and elevate your game with our championship facilities.
+                  </p>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex justify-center"
+                  >
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          <section className="bg-[#F5F1E8] py-24">
+            <div className="max-w-[1400px] mx-auto px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-center mb-16"
+              >
+                <h2 className="text-gray-700 mb-8">
+                  A badminton facility near you
+                </h2>
+                <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                  Step onto our professional courts. Explore our high-quality flooring, ideal lighting, and premium equipment. Discover everything you want from a badminton venue, with our signature Frame 2 Complex excellence throughout.
+                </p>
+              </motion.div>
+
+              <div className="relative">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                >
+                  {facilityImages.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      initial={false}
+                      animate={{
+                        opacity: currentSlide === index ? 1 : 0,
+                        scale: currentSlide === index ? 1 : 1.1,
+                      }}
+                      transition={{ duration: 0.7 }}
+                      className="absolute inset-0"
+                      style={{
+                        pointerEvents:
+                          currentSlide === index
+                            ? "auto"
+                            : "none",
+                      }}
+                    >
+                      <img
+                        src={image}
+                        alt={`Badminton facility ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        style={{
+                          filter:
+                            "contrast(1.05) saturate(1.1)",
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </motion.div>
+                  ))}
+
+                  <div className="absolute inset-0 flex items-center justify-between px-8 pointer-events-none">
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={prevSlide}
+                      className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all pointer-events-auto"
+                    >
+                      <ChevronLeft className="w-6 h-6 text-gray-800" />
+                    </motion.button>
+
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={nextSlide}
+                      className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all pointer-events-auto"
+                    >
+                      <ChevronRight className="w-6 h-6 text-gray-800" />
+                    </motion.button>
+                  </div>
+                </motion.div>
+
+                <div className="flex items-center justify-center gap-3 mt-8">
+                  {facilityImages.map((_, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      whileHover={{ scale: 1.2 }}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* Member Experiences Section - Only for Badminton */}
+      {serviceId === "badminton" && (
+        <section className="bg-white py-24 overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-20"
+            >
+              <h2 className="text-gray-700 mb-6 text-4xl font-bold">
+                Member experiences
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Find out what our members love most about our badminton courts
+              </p>
+            </motion.div>
+
+            <div className="relative">
+              <motion.div
+                className="flex gap-8"
+                animate={{
+                  x: [0, -2400],
+                }}
+                transition={{
+                  x: {
+                    duration: 40,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVyJTIwYmF0dGluZ3xlbnwxfHx8fDE3NjYzMzczNTV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Alex"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          The courts are fantastic. Perfect flooring and lighting makes a huge difference to my game. Highly recommended!
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Alex
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdGVhbSUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc2NjM3ODIwOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Jordan"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Great community and excellent coaching. I've improved so much since joining the club.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Jordan
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVyJTIwYmF0dGluZ3xlbnwxfHx8fDE3NjYzMzczNTV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Tyler"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Booking is easy and the facilities are always clean and well-maintained. Love playing here.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Tyler
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdGVhbSUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc2NjM3ODIwOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Chris"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Best badminton facility in the area. The organized leagues are great fun and very competitive.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Chris
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Duplicates */}
+                <div className="flex-shrink-0 w-[550px]">
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1626224583764-847890e0e99d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWRtaW50b24lMjBwbGF5ZXJ8ZW58MXx8fHwxNzY2NDQwNDgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Alex"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          The courts are fantastic. Perfect flooring and lighting makes a huge difference to my game. Highly recommended!
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Alex
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0 w-[550px]">
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1626224583764-847890e0e99d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWRtaW50b24lMjBwbGF5ZXJ8ZW58MXx8fHwxNzY2NDQwNDgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Jordan"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Great community and excellent coaching. I've improved so much since joining the club.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Jordan
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Come and Experience Section - Only for Leisure Rooms */}
+      {serviceId === "leisure-rooms" && (
+        <>
+          <section className="bg-white py-20 mb-8">
+            <div className="max-w-[1000px] mx-auto px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <h2 className="text-purple-900 mb-12">
+                  Come and experience it for yourself
+                </h2>
+
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Ready to relax and unwind? Experience luxury and entertainment in our premium leisure rooms. Perfect for private gatherings or a chill session with friends. Book your private space today and enjoy exclusive amenities.
+                  </p>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex justify-center"
+                  >
+                    <Link
+                      to="/booking"
+                      className="inline-block px-10 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-950 transition-all shadow-lg"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          <section className="bg-[#F5F1E8] py-24">
+            <div className="max-w-[1400px] mx-auto px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-center mb-16"
+              >
+                <h2 className="text-gray-700 mb-8">
+                  Luxury leisure rooms near you
+                </h2>
+                <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                  Step into our VIP leisure rooms. Explore our premium furnishings, high-quality entertainment systems, and private spaces. Discover everything you want from a luxury experience, with our signature Frame 2 Complex excellence throughout.
+                </p>
+              </motion.div>
+
+              <div className="relative">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="relative h-[300px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl"
+                >
+                  {facilityImages.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      initial={false}
+                      animate={{
+                        opacity: currentSlide === index ? 1 : 0,
+                        scale: currentSlide === index ? 1 : 1.1,
+                      }}
+                      transition={{ duration: 0.7 }}
+                      className="absolute inset-0"
+                      style={{
+                        pointerEvents:
+                          currentSlide === index
+                            ? "auto"
+                            : "none",
+                      }}
+                    >
+                      <img
+                        src={image}
+                        alt={`Leisure room ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        style={{
+                          filter:
+                            "contrast(1.05) saturate(1.1)",
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </motion.div>
+                  ))}
+
+                  <div className="absolute inset-0 flex items-center justify-between px-8 pointer-events-none">
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={prevSlide}
+                      className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all pointer-events-auto"
+                    >
+                      <ChevronLeft className="w-6 h-6 text-gray-800" />
+                    </motion.button>
+
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={nextSlide}
+                      className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all pointer-events-auto"
+                    >
+                      <ChevronRight className="w-6 h-6 text-gray-800" />
+                    </motion.button>
+                  </div>
+                </motion.div>
+
+                <div className="flex items-center justify-center gap-3 mt-8">
+                  {facilityImages.map((_, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      whileHover={{ scale: 1.2 }}
+                      className={`h-2 rounded-full transition-all ${currentSlide === index
+                        ? "w-12 bg-purple-900"
+                        : "w-2 bg-gray-400 hover:bg-gray-600"
+                        }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* Member Experiences Section - Only for Leisure Rooms */}
+      {serviceId === "leisure-rooms" && (
+        <section className="bg-white py-24 overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-20"
+            >
+              <h2 className="text-gray-700 mb-6 text-4xl font-bold">
+                Member experiences
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Find out what our guests love most about our leisure rooms
+              </p>
+            </motion.div>
+
+            <div className="relative">
+              <motion.div
+                className="flex gap-8"
+                animate={{
+                  x: [0, -2400],
+                }}
+                transition={{
+                  x: {
+                    duration: 40,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1765614766433-13379d8faea8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGd1ZXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY2NDQwNDgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Alex"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          The perfect place to host a private gathering. The amenities are top-notch and the service is impeccable.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Alex
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1765614766433-13379d8faea8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGd1ZXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY2NDQwNDgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Jordan"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Incredibly comfortable and stylish. A great escape from the hustle and bustle. Highly recommended.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Jordan
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1765614766433-13379d8faea8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGd1ZXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY2NDQwNDgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Tyler"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          We booked a room for a birthday celebration and it was amazing. The entertainment system was a huge hit.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Tyler
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 w-[550px]"
+                >
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1765614766433-13379d8faea8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGd1ZXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY2NDQwNDgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Chris"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Luxurious, private, and well-equipped. The catering service was also excellent. Will definitely book again.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Chris
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Duplicates */}
+                <div className="flex-shrink-0 w-[550px]">
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1542459629-519887d476da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3VwbGUlMjByZWxheGluZ3xlbnwxfHx8fDE3NjY0NDA0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Alex"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          The perfect place to host a private gathering. The amenities are top-notch and the service is impeccable.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Alex
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0 w-[550px]">
+                  <div className="bg-gradient-to-br from-[#F5F1E8] to-[#FAF8F4] rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                        <img
+                          src="https://images.unsplash.com/photo-1542459629-519887d476da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3VwbGUlMjByZWxheGluZ3xlbnwxfHx8fDE3NjY0NDA0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                          alt="Jordan"
+                          className="w-full h-full object-cover"
+                          style={{
+                            filter:
+                              "contrast(1.05) saturate(1.1)",
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <svg
+                            className="w-8 h-8 text-purple-900 opacity-40"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                          </svg>
+                        </div>
+                        <p className="text-purple-900 text-lg mb-4 leading-relaxed">
+                          Incredibly comfortable and stylish. A great escape from the hustle and bustle. Highly recommended.
+                        </p>
+                        <div>
+                          <p className="text-gray-800 mb-1">
+                            Jordan
+                          </p>
+                          <p className="text-gray-500 text-sm">
+                            Frame 2 Complex
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>

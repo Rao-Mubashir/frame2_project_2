@@ -4,21 +4,21 @@ import { motion } from 'framer-motion';
 const articles = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1590074121258-6b53b6adb8f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHJlbmd0aCUyMHRyYWluaW5nJTIwY2lyY3VpdCUyMGd5bXxlbnwxfHx8fDE3NjY0Mjk4Njl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    categories: ["Fitness", "Wellness", "Workouts"],
-    title: "Introducing the Intuitive Strength Circuit"
+    image: "/images/badminton/IR5A8724.jpg",
+    categories: ["Badminton", "Training", "Wellness"],
+    title: "Mastering the Smash: Tips from the Pros"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1756314355692-56276a5b7bdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxncm91cCUyMGZpdG5lc3MlMjBjbGFzcyUyMGV4ZXJjaXNlJTIwZnVufGVufDF8fHx8MTc2NjQyOTg2OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    categories: ["Wellness", "Fitness", "Gym Advice"],
-    title: "That's entertainment: How to enjoy exercise"
+    image: "/images/snooker/IR5A8646.jpg",
+    categories: ["Snooker", "Focus", "Technique"],
+    title: "The Art of Precision: Improving Your Cue Action"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1758599879906-91085de59ccd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b2dhJTIwbWVkaXRhdGlvbiUyMHdlbGxuZXNzJTIwZ29hbHN8ZW58MXx8fHwxNzY2NDI5ODcwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    categories: ["Nutrition", "Wellness", "Gym Advice"],
-    title: "11 wellness goals that could transform your life"
+    image: "/images/football/IR5A8719.jpg",
+    categories: ["Football", "Teamwork", "Fitness"],
+    title: "Building Endurance for the 90-Minute Game"
   }
 ];
 
@@ -61,7 +61,7 @@ export function KnowledgeSection() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     </div>
-                    
+
                     {/* Content */}
                     <div className="p-6">
                       {/* Categories */}
@@ -78,7 +78,7 @@ export function KnowledgeSection() {
                           </span>
                         ))}
                       </div>
-                      
+
                       {/* Title */}
                       <h3 className="text-gray-800 text-xl leading-snug group-hover:text-purple-900 transition-colors">
                         {article.title}
