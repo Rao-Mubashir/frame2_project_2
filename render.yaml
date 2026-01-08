@@ -27,12 +27,18 @@ services:
         fromDatabase:
           name: frame2-db
           property: connectionString
+      - key: APP_URL
+        fromService:
+          type: web
+          name: frame2-backend
+          property: host
 
   # React Frontend (Static Site)
   - type: web
     name: frame2-frontend
     runtime: static
-    buildCommand: npm install && npm run build
+    # Aggressive build: delete any pre-existing node_modules (fixes Windows Git permissions)
+    buildCommand: rm -rf node_modules && npm install && npm run build
     staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
