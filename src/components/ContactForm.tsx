@@ -74,7 +74,10 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
     setStatus('submitting');
 
     try {
-      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      if (!baseUrl.startsWith('http')) {
+        baseUrl = `https://${baseUrl}`;
+      }
       await axios.post(`${baseUrl}/api/contact/query`, formData);
       setStatus('success');
       setFormData({

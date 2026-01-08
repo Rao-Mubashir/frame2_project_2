@@ -16,29 +16,37 @@ services:
         fromService:
           type: web
           name: frame2-backend
-          property: url
+          property: host
       - key: DB_CONNECTION
         value: pgsql
+      - key: DB_URL
+        fromService:
+          type: database
+          name: frame2-db
+          property: connectionString
       - key: DB_HOST
         fromService:
-          type: psql
+          type: database
           name: frame2-db
           property: host
       - key: DB_PORT
-        value: 5432
+        fromService:
+          type: database
+          name: frame2-db
+          property: port
       - key: DB_DATABASE
         fromService:
-          type: psql
+          type: database
           name: frame2-db
-          property: name
+          property: database
       - key: DB_USERNAME
         fromService:
-          type: psql
+          type: database
           name: frame2-db
           property: user
       - key: DB_PASSWORD
         fromService:
-          type: psql
+          type: database
           name: frame2-db
           property: password
 
@@ -49,13 +57,12 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     plan: free
-    region: frankfurt
     envVars:
       - key: VITE_API_URL
         fromService:
           type: web
           name: frame2-backend
-          property: url
+          property: host
 
 databases:
   - name: frame2-db

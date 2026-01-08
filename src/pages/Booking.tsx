@@ -6,7 +6,11 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import axios from 'axios';
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/api';
+let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+if (!baseUrl.startsWith('http')) {
+  baseUrl = `https://${baseUrl}`;
+}
+const API_BASE_URL = `${baseUrl}/api`;
 
 type BookingFormData = {
   category_id: string;

@@ -37,7 +37,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    let apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    if (!apiUrl.startsWith('http')) {
+      apiUrl = `https://${apiUrl}`;
+    }
+    axios.defaults.baseURL = apiUrl;
     const token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
