@@ -2,7 +2,7 @@ services:
   # Laravel Backend (Web Service)
   - type: web
     name: frame2-backend
-    env: docker
+    runtime: docker
     dockerContext: ./backend
     dockerfilePath: ./backend/Dockerfile
     plan: free
@@ -12,11 +12,6 @@ services:
         generateValue: true
       - key: APP_ENV
         value: production
-      - key: APP_URL
-        fromService:
-          type: web
-          name: frame2-backend
-          property: host
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_URL
