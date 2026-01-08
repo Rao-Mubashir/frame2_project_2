@@ -20,33 +20,27 @@ services:
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_URL
-        fromService:
-          type: database
+        fromDatabase:
           name: frame2-db
           property: connectionString
       - key: DB_HOST
-        fromService:
-          type: database
+        fromDatabase:
           name: frame2-db
           property: host
       - key: DB_PORT
-        fromService:
-          type: database
+        fromDatabase:
           name: frame2-db
           property: port
       - key: DB_DATABASE
-        fromService:
-          type: database
+        fromDatabase:
           name: frame2-db
           property: database
       - key: DB_USERNAME
-        fromService:
-          type: database
+        fromDatabase:
           name: frame2-db
           property: user
       - key: DB_PASSWORD
-        fromService:
-          type: database
+        fromDatabase:
           name: frame2-db
           property: password
 
