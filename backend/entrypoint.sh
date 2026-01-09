@@ -8,21 +8,16 @@ if [ "$DB_CONNECTION" = "sqlite" ] || [ -z "$DB_CONNECTION" ]; then
     chown -R www-data:www-data database
 fi
 
-# Clear old caches just in case
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-php artisan cache:clear
+# Ensure fresh database on startup
+echo "Wiping and re-seeding database..."
+php artisan migrate:fresh --force --seed
 
-# Cache configuration
+# Cache configuration AFTER database is ready
 echo "Caching configuration..."
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
-
-# Run migrations and seeders (Force fresh to ensure categories exist)
-echo "Wiping and re-seeding database..."
-php artisan migrate:fresh --force --seed
+php artisan cache:clear # Now safe since tables exist
 
 echo "Starting server..."
 # Start PHP-FPM (in background) and Nginx
