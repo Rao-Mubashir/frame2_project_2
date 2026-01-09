@@ -40,7 +40,8 @@ COPY --from=frontend-builder /app/dist/ /var/www/public/
 RUN composer install --no-dev --optimize-autoloader
 
 # Setup Nginx
-COPY backend/nginx/conf.d/app.conf /etc/nginx/conf.d/default.conf
+RUN rm -f /etc/nginx/sites-enabled/default
+COPY backend/nginx/conf.d/app.conf /etc/nginx/conf.d/app.conf
 
 # Setup entrypoint
 COPY backend/entrypoint.sh /usr/local/bin/entrypoint.sh
