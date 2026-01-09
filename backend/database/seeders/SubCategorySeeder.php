@@ -31,13 +31,17 @@ class SubCategorySeeder extends Seeder
             $category = Category::where('name', $subCat['category'])->first();
             
             if ($category) {
-                SubCategory::create([
-                    'category_id' => $category->id,
-                    'name' => $subCat['name'],
-                    'slug' => Str::slug($subCat['name']),
-                    'price_per_hour' => $subCat['price'],
-                    'is_active' => true,
-                ]);
+                SubCategory::firstOrCreate(
+                    [
+                        'category_id' => $category->id,
+                        'name' => $subCat['name']
+                    ],
+                    [
+                        'slug' => Str::slug($subCat['name']),
+                        'price_per_hour' => $subCat['price'],
+                        'is_active' => true,
+                    ]
+                );
             }
         }
     }
