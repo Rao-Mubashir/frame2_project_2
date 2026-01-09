@@ -1,4 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
+import api from '../lib/api';
 import axios from 'axios';
 import {
   Mail,
@@ -74,14 +75,7 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
     setStatus('submitting');
 
     try {
-      let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-      if (!baseUrl.includes('.') && !baseUrl.includes('localhost')) {
-        baseUrl = `${baseUrl}.onrender.com`;
-      }
-      if (!baseUrl.startsWith('http')) {
-        baseUrl = `https://${baseUrl}`;
-      }
-      await axios.post(`${baseUrl}/api/contact/query`, formData);
+      await api.post('/api/contact/query', formData);
       setStatus('success');
       setFormData({
         firstName: "",

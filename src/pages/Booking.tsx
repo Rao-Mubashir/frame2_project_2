@@ -4,16 +4,8 @@ import { useForm } from 'react-hook-form';
 import { Eye, EyeOff, CheckCircle2, AlertCircle, Calendar, Clock } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import api from '../lib/api';
 import axios from 'axios';
-
-let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-if (!baseUrl.includes('.') && !baseUrl.includes('localhost')) {
-  baseUrl = `${baseUrl}.onrender.com`;
-}
-if (!baseUrl.startsWith('http')) {
-  baseUrl = `https://${baseUrl}`;
-}
-const API_BASE_URL = `${baseUrl}/api`;
 
 type BookingFormData = {
   category_id: string;
@@ -86,9 +78,7 @@ export default function Booking() {
       try {
         const token = localStorage.getItem('token');
         if (token) {
-          const response = await axios.get(`${API_BASE_URL}/user`, {
-            headers: { Authorization: `Bearer ${token}` }
-          });
+          const response = await api.get('/api/user');
           if (response.data) {
             setIsAuthenticated(true);
           }
@@ -104,7 +94,7 @@ export default function Booking() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/categories`);
+        const response = await api.get('/api/categories');
         setCategories(response.data);
       } catch (err) {
         console.error('Error fetching categories:', err);
@@ -118,7 +108,7 @@ export default function Booking() {
     if (categoryId) {
       const fetchSubCategories = async () => {
         try {
-          const response = await axios.get(`${API_BASE_URL}/categories/${categoryId}/sub-categories`);
+          const response = await api.get(`/api/categories/${categoryId}/sub-categories`);
           const seenNames = new Set();
           const uniqueSubCats = response.data.filter((item: SubCategory) => {
             if (seenNames.has(item.name)) return false;
@@ -143,7 +133,7 @@ export default function Booking() {
     if (subCategoryId) {
       const fetchInstances = async () => {
         try {
-          const response = await axios.get(`${API_BASE_URL}/sub-categories/${subCategoryId}/instances`);
+          const response = await api.get(`/api/sub-categories/${subCategoryId}/instances`);
           setInstances(response.data);
           setTimeSlots([]);
           setValue('instance_id', '');
@@ -166,7 +156,7 @@ export default function Booking() {
     if (instanceId && bookingDate) {
       const fetchTimeSlots = async () => {
         try {
-          const response = await axios.get(`${API_BASE_URL}/bookings/available-slots`, {
+          const response = await api.get('/api/bookings/available-slots', {
             params: { instance_id: instanceId, date: bookingDate }
           });
           setTimeSlots(response.data.slots || []);
@@ -199,10 +189,7 @@ export default function Booking() {
         })
       };
 
-      const token = localStorage.getItem('token');
-      const headers = token ? { Authorization: `Bearer ${token}` } : {};
-
-      const response = await axios.post(`${API_BASE_URL}/bookings`, bookingData, { headers });
+      const response = await api.post('/api/bookings', bookingData);
 
       // If new user was created, save token
       if (response.data.user && !isAuthenticated) {
