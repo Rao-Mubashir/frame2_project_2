@@ -33,6 +33,11 @@ services:
           type: web
           name: frame2-app
           property: host
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: frame2-app
+          property: host
       # Trigger fresh DB on first deploy if needed
       - key: DB_FRESH
         value: "true"
