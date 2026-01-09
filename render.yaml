@@ -8,12 +8,13 @@ databases:
     user: frame2_user
 
 services:
-  # Laravel Backend (Web Service)
+  # Consolidated App Service (Laravel + React Frontend)
   - type: web
-    name: frame2-backend
+    name: frame2-app
     runtime: docker
-    dockerContext: ./backend
-    dockerfilePath: ./backend/Dockerfile
+    # Use root context to access both frontend and backend files
+    dockerContext: .
+    dockerfilePath: Dockerfile
     plan: free
     region: frankfurt
     envVars:
@@ -28,15 +29,10 @@ services:
           name: frame2-db
           property: connectionString
       - key: APP_URL
-        value: https://frame2-backend.onrender.com
-
-  # React Frontend (Static Site)
-  - type: web
-    name: frame2-frontend
-    runtime: static
-    # Aggressive build: delete any pre-existing node_modules (fixes Windows Git permissions)
-    buildCommand: rm -rf node_modules && npm install && npm run build
-    staticPublishPath: ./dist
-    envVars:
-      - key: VITE_API_URL
-        value: https://frame2-backend.onrender.com
+        fromService:
+          type: web
+          name: frame2-app
+          property: host
+      # Trigger fresh DB on first deploy if needed
+      - key: DB_FRESH
+        value: "true"
