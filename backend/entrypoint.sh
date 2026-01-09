@@ -20,9 +20,9 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Run migrations and seeders
-echo "Running migrations and seeding..."
-php artisan migrate --force --seed
+# Run migrations and seeders (Force fresh to ensure categories exist)
+echo "Wiping and re-seeding database..."
+php artisan migrate:fresh --force --seed
 
 echo "Starting server..."
 # Start PHP-FPM (in background) and Nginx
