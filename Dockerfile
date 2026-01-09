@@ -39,6 +39,9 @@ COPY --from=frontend-builder /app/dist/ /var/www/public/
 # Install composer dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Set permissions
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
 # Setup Nginx
 RUN rm -f /etc/nginx/sites-enabled/default
 COPY backend/nginx/conf.d/app.conf /etc/nginx/conf.d/app.conf

@@ -5,7 +5,14 @@ if [ "$DB_CONNECTION" = "sqlite" ] || [ -z "$DB_CONNECTION" ]; then
     echo "Using SQLite. Ensuring database file exists..."
     mkdir -p database
     touch database/database.sqlite
+    chown -R www-data:www-data database
 fi
+
+# Clear old caches just in case
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+php artisan cache:clear
 
 # Cache configuration
 echo "Caching configuration..."
