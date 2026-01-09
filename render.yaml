@@ -28,10 +28,7 @@ services:
           name: frame2-db
           property: connectionString
       - key: APP_URL
-        fromService:
-          type: web
-          name: frame2-backend
-          property: host
+        value: https://frame2-backend.onrender.com
 
   # React Frontend (Static Site)
   - type: web
@@ -42,7 +39,4 @@ services:
     staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: frame2-backend
-          property: host
+        value: https://frame2-backend.onrender.com
