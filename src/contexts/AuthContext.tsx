@@ -38,6 +38,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     let apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+    // If it's a bare Render hostname (like 'frame2-backend'), append .onrender.com
+    if (!apiUrl.includes('.') && !apiUrl.includes('localhost')) {
+      apiUrl = `${apiUrl}.onrender.com`;
+    }
+
     if (!apiUrl.startsWith('http')) {
       apiUrl = `https://${apiUrl}`;
     }

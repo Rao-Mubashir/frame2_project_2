@@ -7,6 +7,9 @@ import { Footer } from '../components/Footer';
 import axios from 'axios';
 
 let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+if (!baseUrl.includes('.') && !baseUrl.includes('localhost')) {
+  baseUrl = `${baseUrl}.onrender.com`;
+}
 if (!baseUrl.startsWith('http')) {
   baseUrl = `https://${baseUrl}`;
 }

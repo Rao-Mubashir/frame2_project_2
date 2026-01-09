@@ -75,6 +75,9 @@ export function ContactForm({ contact }: { contact?: ContactDetails }) {
 
     try {
       let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      if (!baseUrl.includes('.') && !baseUrl.includes('localhost')) {
+        baseUrl = `${baseUrl}.onrender.com`;
+      }
       if (!baseUrl.startsWith('http')) {
         baseUrl = `https://${baseUrl}`;
       }
